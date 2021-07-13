@@ -9,11 +9,8 @@
 	<!--YOUR OWN JAVASCRIPT CAN GO RIGHT HERE-->
 	<script type="text/javascript">
 		function TestButtonHandler() {
-			// get my values!
-			userCountValue = document.getElementById("userCountInput").value;
-
-			var webMethod = "ProjectServices.asmx/getJasons";
-			var parameters = "{\"userCount\":\"" + encodeURI(userCountValue) + "\"}";
+			var webMethod = "ProjectServices.asmx/TestConnection";
+			var parameters = "{}";
 
 			//jQuery ajax method
 			$.ajax({
@@ -24,22 +21,12 @@
 				dataType: "json",
 				success: function (msg) {
 					var responseFromServer = msg.d;
-					
-					for(var i = 0; i <responseFromServer; i++){
-						alert(responseFromServer[i].firstName);
-						alert(responseFromServer[i].lastName);
-						alert(responseFromServer[i].phoneNumber);
-					}
-					doThisAfterServerStuff();
+					alert(responseFromServer);
 				},
 				error: function (e) {
 					alert("this code will only execute if javascript is unable to access the webservice");
 				}
 			});
-		}
-
-		function doThisAfterServerStuff(){
-			alert("You thought this would execute after the code in the success function, didn't you?")
 		}
 	</script>
 	<!--END OF YOUR OWN JAVASCRIPT-->
@@ -51,6 +38,6 @@
 	<!--END OF YOUR OWN CSS-->
 </head >
 <body>
-	<input id="userCountInput" type="text" /><button onclick="javascript: TestButtonHandler();">Click here to test connection!</button>
+	<button onclick="javascript: TestButtonHandler();">Click here to test connection!</button>
 </body>
 </html >

@@ -62,20 +62,5 @@ namespace ProjectTemplate
 				return "Something went wrong, please check your credentials and db name and try again.  Error: "+e.Message;
 			}
 		}
-
-		[WebMethod]
-		public Person[] getJasons(int userCount)
-		{
-			List<Person> people = new List<Person>();
-			for (int i = 0; i < userCount; i++)
-			{
-				person jason = new Person();
-				jason.firstName = "Jason";
-				jason.lastName = "Nichols";
-				jason.phoneNumber = 1234567890;
-				people.Add(jason)
-			}
-			return people.ToArray();
-		}
 	}
 }
