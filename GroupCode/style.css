@@ -67,6 +67,10 @@ body{
   background-color: blue;
 }
 
+.but button:hover{
+  background-color: blue;
+}
+
 .menuHeader{
   /* display: inline-block; */
   text-align: center;
