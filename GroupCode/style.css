@@ -1,19 +1,19 @@
 
-/* Class used for centering */
+/* Login Page */
 .center {
   margin-bottom: 0%;
   text-align: center;
   width: 100%;
 }
 
-
+/* ANY Page */
 body{
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
 }
 
-/* This will be for login form  */
+/* Login Page */
 .loginForm{
   display: block;  
   margin: 0 auto; 
@@ -21,7 +21,7 @@ body{
   font-family: sans-serif;
 }
 
-/* Login button */
+/* Login Page */
 .logInBut{
   font-family: sans-serif;
   background-color: dodgerblue;
@@ -33,6 +33,7 @@ body{
   width: 10%;
 }
 
+/* Can be used for ANY page*/
 /* Logout button */
 .logOutButton{
   color: white;
@@ -42,6 +43,7 @@ body{
   float: right;
 }
 
+/* Can be used for ANY page*/
 /* horizontal lines. Needed or else it will wrap around the logout button */
 .horizontal{
   display: inline-block;
@@ -49,6 +51,7 @@ body{
   margin: 0%;
 }
 
+/* Also used for manager menu buttons */
 /* Employee menu button list */
 .employeeButtons button{
   background-color: dodgerblue;
@@ -62,14 +65,16 @@ body{
   border-radius: 24px;
 }
 
+/* employee menu */
 .employeeButtons button:hover{
   background-color: blue;
 }
 
+/* employee menu */
 .but button:hover{
   background-color: blue;
 }
-
+/* CAN be used for any page */
 /* Position fixed and width is what fixed the centering*/
 .menuHeader{
   margin-bottom: 0%;
