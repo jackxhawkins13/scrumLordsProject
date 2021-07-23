@@ -22,7 +22,7 @@ body{
 }
 
 /* Login Page */
-.logInBut{
+#logInBtn{
   font-family: sans-serif;
   background-color: dodgerblue;
   color: white;
@@ -33,14 +33,26 @@ body{
   width: 10%;
 }
 
+/* Changes hover color for login button */
+#logInBtn:hover{
+  background-color: blue;
+}
+
 /* Can be used for ANY page*/
 /* Logout button */
-.logOutButton{
+.logOutBtn{
   color: white;
   background-color: dodgerblue;
   border-radius: 24px;
   padding: 5px 25px;
   float: right;
+  width: 12%;
+  font-size: 18px;
+}
+
+/* changes color of logout button when hovered */
+.logOutBtn:hover{
+  background-color: red;
 }
 
 /* Can be used for ANY page*/
@@ -51,33 +63,28 @@ body{
   margin: 0%;
 }
 
-/* Also used for manager menu buttons */
+/* Used for Employee and Manager Buttons */
 /* Employee menu button list */
-.employeeButtons button{
+.blueBtn button{
   background-color: dodgerblue;
   color: white;
   width: 50%;
   display: block;
   margin: auto;
   padding: 10px 24px;
-  /* border:blue; */
   font-size: medium;
   border-radius: 24px;
 }
 
-/* employee menu */
-.employeeButtons button:hover{
+.blueBtn button:hover{
   background-color: blue;
 }
 
-/* employee menu */
-.but button:hover{
-  background-color: blue;
-}
 /* CAN be used for any page */
 /* Position fixed and width is what fixed the centering*/
 .menuHeader{
-  margin-bottom: 0%;
+  /* margin-bottom: 0%; */
+  /* margin: 0; */
   position: fixed;
   text-align: center;
   width: 100%;
