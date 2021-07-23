@@ -1,7 +1,9 @@
+
+/* Class used for centering */
 .center {
-	margin: auto;
-	display: table;
+  margin-bottom: 0%;
   text-align: center;
+  width: 100%;
 }
 
 
@@ -11,26 +13,24 @@ body{
   font-family: sans-serif;
 }
 
+/* This will be for login form  */
 .loginForm{
-  
   display: block;  
   margin: 0 auto; 
   width: 400px;
   font-family: sans-serif;
 }
 
-.but {
-  position: relative;
-  padding-left: 100px;
-}
-
-.logBut{
-  width: 100px;
+/* Login button */
+.logInBut{
   font-family: sans-serif;
   background-color: dodgerblue;
   color: white;
   border-radius: 24px;
-  
+  margin-bottom: 0%;
+  position: fixed;
+  text-align: center;
+  width: 10%;
 }
 
 /* Logout button */
@@ -56,7 +56,6 @@ body{
   width: 50%;
   display: block;
   margin: auto;
-  width: 50%;
   padding: 10px 24px;
   /* border:blue; */
   font-size: medium;
@@ -71,9 +70,10 @@ body{
   background-color: blue;
 }
 
+/* Position fixed and width is what fixed the centering*/
 .menuHeader{
-  /* display: inline-block; */
-  text-align: center;
   margin-bottom: 0%;
-  /* position: fixed; */
+  position: fixed;
+  text-align: center;
+  width: 100%;
 }
