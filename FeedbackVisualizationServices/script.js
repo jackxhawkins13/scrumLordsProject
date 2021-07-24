@@ -26,3 +26,8 @@ class Manager extends Employee {
         super(employeeId, password);
     }
 }
+
+// onclick of "view card", forwards user to viewCards.html
+function forwardToCards(){
+    location.href = "viewCards.html"
+}
