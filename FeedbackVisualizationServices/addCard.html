@@ -16,7 +16,7 @@
     <hr class="horizontal">
 
     <!--menu Button-->
-    <button type="button" class="menuBtn">Menu</button>
+    <button type="button" class="menuBtn" onclick=backToMenu();>Menu</button>
     
     <!--Logout Button-->
     <button type="button" class="logOutBtn">Logout</button>
@@ -29,33 +29,32 @@
     <hr class="horizontal">
 
     <form id="addCardFormId">
-        <table>
+      <table>
 
-            <tr>
-              <!-- This will be card title-->
-              <td>Title:</td>
-              <td><input type="text" id="titleID" placeholder="Your Suggestion Here" size="50" maxlength="50"
-              required></td>
-            </tr>
-            <tr> 
-              <!-- This will be detail info -->
-              <td>Description:</td>
-              <td><input type="text" id="descriptionID" placeholder="Why you think this is important?" size="200" maxlength="150"
-              required></td>
-            </tr> 
-    
-          </table>
+        <tr>
+          <!-- This will be card title-->
+          <td>Title:</td>
+          <td><input type="text" id="titleID" placeholder="Your Suggestion Here" size="50" maxlength="50"
+          required></td>
+        </tr>
+        <tr> 
+          <!-- This will be detail info -->
+          <td>Description:</td>
+          <td><input type="text" id="descriptionID" placeholder="Why you think this is important?" size="200" maxlength="150"
+          required></td>
+        </tr> 
+      </table>
+      <!--Line break-->
+      <hr class="horizontal">
 
+      <!--Add Button-->
+      <button type="button" class="addBtn" onclick="addCards(this.form)">Add</button>
+      
+      <!--Clear Button-->
+      <input type="reset" class="reset" value="Clear">
     </form>
 
-    <!--Line break-->
-    <hr class="horizontal">
-
-    <!--Add Button-->
-    <button type="button" class="addBtn">Add</button>
     
-    <!--Clear Button-->
-    <button type="button" class="clearBtn">Clear</button>
     
 </body>
 </html>
