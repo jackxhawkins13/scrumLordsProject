@@ -34,7 +34,7 @@ body{
 }
 
 /* Add Card page */
-.addBtn, .clearBtn, .menuBtn{
+.addBtn, .reset, .menuBtn{
   color: white;
   background-color: dodgerblue;
   border-radius: 24px;
