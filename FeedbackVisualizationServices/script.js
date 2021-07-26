@@ -34,17 +34,44 @@ var cardDescription = "";
 
 var cardsTable;
 
+function init() {
+    document.getElementById("employee").style.display="none";
+    document.getElementById("addCardPage").style.display="none";
+    document.getElementById("manager").style.display="none";
+    
+}
+
 function EMinitialize() {
     cardsTable=document.getElementById("cardsTable");
 }
 
-// onclick of "view card", forwards user to viewCards.html
-function forwardToCards(){
-    location.href = "viewCards.html"
+function login() {
+    if (getValue("employeeID") == "admin"){
+        document.getElementById("login").style.display="none";
+        document.getElementById("manager").style.display="";
+        document.getElementById("addCardPage").style.display="none";
+    }else {
+        document.getElementById("login").style.display="none";
+        document.getElementById("employee").style.display="";
+        document.getElementById("addCardPage").style.display="none";
+    }
+        
+    
 }
 
+function logout() {
+    document.getElementById("login").style.display="";
+    document.getElementById("employee").style.display="none";
+    document.getElementById("addCardPage").style.display="none";
+    document.getElementById("loginForm").reset();
+    document.getElementById("manager").style.display="none";
+}
+
+
 function forwardToAddCards () {
-    location.href = "addCard.html"
+    document.getElementById("addCardPage").style.display="";
+    document.getElementById("employee").style.display="none";
+    document.getElementById("addCardFormId").reset();
 }
 
 // get value by id
@@ -75,7 +102,9 @@ function addCards(form){
 function backToMenu() {
     let confirmation = confirm("Unsaved change will be lost! Are you sure back to menu?");
     if (confirmation == true) {
-        location.href = "employeeMenu.html"
+        document.getElementById("addCardPage").style.display="none";
+        document.getElementById("employee").style.display="";
+
     }
 }
 
