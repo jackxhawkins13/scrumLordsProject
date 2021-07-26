@@ -2,17 +2,17 @@
 let http = require("http");
 let mysql = require("mysql");
 let events = require("events");
+let httpServer = http.createServer(processRequest);
 
 let filmSelectionIndex = 999;
 
 let res;
 
-let inputUsername = "";
-let inputPassword = "";
+let ;
+let ;
 let loginStatus = false;
 
 
-let httpServer = http.createServer(processRequest);
 
 
 //TODO: Brandon: I don't think we should use local host to host the server but need to confirm with team on the server setting (XIN)
@@ -31,6 +31,8 @@ function processRequest(request, response) {
     console.log(`Request host is ${base}`);
     let url = new URL(request.url, base);
     let params = url.searchParams;
+    let inputUsername = params.get("employeeID");
+    let inputPassword = params.get("employeePassword");
 
 
 
@@ -94,3 +96,5 @@ function checkLogin(record) {
         alert("login unsuccessful! Please try again!");
     }
 }
+
+
