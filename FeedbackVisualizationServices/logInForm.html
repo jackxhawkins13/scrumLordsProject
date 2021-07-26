@@ -17,26 +17,28 @@
     <hr class="horizontal">
 
     <!-- Login form  -->
-    <form class="loginForm">
+    <form class="loginForm" method="get" action="http://localhost:8080/">
       <table>
 
         <tr>
           <!-- This will be employee id info-->
           <td>Employee ID:</td>
-          <td><input type="text" id="employeeID" placeholder="Employee ID"
+          <td><input type="text" name="employeeID" id="employeeID" placeholder="Employee ID"
           required></td>
           </tr>
         <tr> 
           <!-- This will be employee login info -->
           <td>Employee Password:</td>
-          <td><input type="text" id="employeePassword" placeholder="Password"
+          <td><input type="text" name ="employeePassword" id="employeePassword" placeholder="Password"
           required></td>
         </tr> 
 
+        
       </table>
 
+      <input class="blueBtn" id="logInBtn" type="submit" value="Login">
       <!-- the actual button -->
-      <button class="blueBtn" id="logInBtn" type="button" onclick="">Login</button>
+      <!-- <button class="blueBtn" id="logInBtn" type="button" onclick="">Login</button> -->
 
     </form>
   </body>

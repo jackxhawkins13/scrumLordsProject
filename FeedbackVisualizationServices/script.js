@@ -46,6 +46,9 @@ function EMinitialize() {
 }
 
 function login() {
+    if (err) throw err;
+
+
     if (getValue("employeeID") == "admin"){
         document.getElementById("login").style.display="none";
         document.getElementById("manager").style.display="";

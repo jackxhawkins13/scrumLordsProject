@@ -2,14 +2,15 @@
 let http = require("http");
 let mysql = require("mysql");
 let events = require("events");
+
+let inputPassword = "";
+let inputUsername = "";
 let httpServer = http.createServer(processRequest);
 
 let filmSelectionIndex = 999;
 
 let res;
 
-let ;
-let ;
 let loginStatus = false;
 
 
@@ -25,14 +26,19 @@ function processRequest(request, response) {
     res = response;
     response.writeHead(200, { 'Content-Type': 'text/html' });
 
-    response.write("<p>Here is the information you were looking for</p>");
+
     
     let base = "http://" + request.headers["host"];
     console.log(`Request host is ${base}`);
     let url = new URL(request.url, base);
     let params = url.searchParams;
-    let inputUsername = params.get("employeeID");
-    let inputPassword = params.get("employeePassword");
+    inputUsername = params.get("employeeID");
+    inputPassword = params.get("employeePassword");
+
+
+
+    //inputUsername = document.getElementById("employeeID").value;
+    //inputPassword = document.getElementById("employeePassword").value;
 
 
 
@@ -65,7 +71,7 @@ function initalizeDB() {
     console.log("Connected to database. Welcome");
 
     // need to change to match our code
-    let sqlquery = `select emp_username, emp_password, employee_id from Employees where film_id = ${filmSelectionIndex}`;
+    let sqlquery = `select emp_username, emp_password, employee_id from Employees`;
     con.query(sqlquery, processResult);
     con.end();
 
@@ -78,22 +84,30 @@ function processResult(err, result) {
         throw err;
     }
 
-    result.forEach(checkLogin);
+    //break when return ture
+    result.every(checkLogin);
 
-    eventEmitter.emit("processingFinished");
+    
+
 }
 
 
 //check login in information
 function checkLogin(record) {
+    console.log(record);
+
     if (record.emp_username == inputUsername) {
         if (record.emp_password == inputPassword) {
-            loginStatus = true;
-            alert("login successful!");
+            loginStatus = false;
+            console.log("login successful!");
+            
+            return false;
+
         }
     } else {
-        loginStatus = false;
-        alert("login unsuccessful! Please try again!");
+        loginStatus = true;
+        console.log("login unsuccessful! Please try again!");
+        return true;
     }
 }
 
