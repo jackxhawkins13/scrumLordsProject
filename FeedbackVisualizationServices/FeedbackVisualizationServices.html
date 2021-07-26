@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Anonymous Sugestion Box</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="script.js"></script>
+  </head>
+  <body onload=init();>
+    <div id='login'>
+      <!-- Site header -->
+      <h1 class="center">Welcome!</h1>
+      
+      <!-- Line Break -->
+      <hr class="horizontal">
+
+      <!-- Login form  -->
+      <form class="loginForm" id="loginForm">
+        <table>
+
+          <tr>
+            <!-- This will be employee id info-->
+            <td>Employee ID:</td>
+            <td><input type="text" id="employeeID" placeholder="Employee ID"
+            required></td>
+            </tr>
+          <tr> 
+            <!-- This will be employee login info -->
+            <td>Employee Password:</td>
+            <td><input type="text" id="employeePassword" placeholder="Password"
+            required></td>
+          </tr> 
+
+        </table>
+
+        <!-- the actual button -->
+        <button class="blueBtn" id="logInBtn" type="button" onclick="login();">Login</button>
+      </form>    
+    </div>
+
+    <div id="employee">
+      <!-- Page Header-->
+      <h2 class="center">HAF - Feedback Visualization Services</h2>
+
+      <!--Line break-->
+      <hr class="horizontal">
+      
+      <!--Logout Button-->
+      <button type="button" class="logOutBtn" onclick=logout();>Logout</button>
+
+      <div>
+          <h3 class="menuHeader">Menu - Employee </h3>
+      </div>
+          
+      <!--Line break-->
+      <hr class="horizontal">
+
+      <div class="cardsDiv">
+          <!-- Cards Table -->
+          <table class="cardsTable" id="cardsTable">
+              <tr>
+                  <th></th>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Rating</th>
+              </tr>
+              <tr>
+                  <td><input type="radio" value=1001 name="radio" id="radio1"></td>
+                  <td>2nd Microwave in breakroom</td>
+                  <td>I would like there to be a second microwave in the breakroom so that we can warm up our food without needing to wait 20 minutes to warm up my food</td>
+                  <td>80%</td>
+              </tr>
+              <tr>
+                  <td><input type="radio" value=1002 name="radio" id="radio2"></td>
+                  <td>Allow employees to park anywhere</td>
+                  <td>Having assigned parking is unfair. Some staff members have to park in the furthest spot even if there are open spots near the office entry</td>
+                  <td>50%</td>
+              </tr>
+          </table>
+      </div>
+
+      <!--Buttons for Employees-->
+      <div class="blueBtn">
+          <!-- <button id="viewCards" onclick="forwardToCards()">View Cards</button> -->
+          <button id="addCards" onclick="forwardToAddCards()">Add Cards</button>
+          <button id="myCards">My Cards</button>
+          <button id="rateCards" onclick="rateCards()">Rate Cards</button>
+      </div>
+    </div>
+
+    <div id="addCardPage">
+      <!-- Page Header-->
+      <h2 class="center">HAF - Feedback Visualization Services</h2>
+
+      <!--Line break-->
+      <hr class="horizontal">
+
+      <!--menu Button-->
+      <button type="button" class="menuBtn" onclick=backToMenu();>Menu</button>
+      
+      <!--Logout Button-->
+      <button type="button" class="logOutBtn" onclick=logout();>Logout</button>
+
+      <div>
+          <h3 class="menuHeader">Add Cards</h3>
+      </div>
+          
+      <!--Line break-->
+      <hr class="horizontal">
+
+      <form id="addCardFormId">
+        <table>
+
+          <tr>
+            <!-- This will be card title-->
+            <td>Title:</td>
+            <td><input type="text" id="titleID" placeholder="Your Suggestion Here" size="50" maxlength="50"
+            required></td>
+          </tr>
+          <tr> 
+            <!-- This will be detail info -->
+            <td>Description:</td>
+            <td><input type="text" id="descriptionID" placeholder="Why you think this is important?" size="200" maxlength="150"
+            required></td>
+          </tr> 
+        </table>
+        <!--Line break-->
+        <hr class="horizontal">
+
+        <!--Add Button-->
+        <button type="button" class="addBtn" onclick="addCards(this.form)">Add</button>
+        
+        <!--Clear Button-->
+        <input type="reset" class="reset" value="Clear">
+      </form>
+    </div>
+
+    <div id="manager">
+      <!-- Page Header-->
+      <h2 class="center">HAF - Feedback Visualization Services</h2>
+
+      <!--Line break-->
+      <hr class="horizontal">
+
+      
+      <!--Logout Button-->
+      <button type="button" class="logOutBtn" onclick=logout();>Logout</button>
+      
+      <!-- To help with centering I placed within a div --> 
+      <div>
+        <h3 class="menuHeader">Menu - Manager </h3>
+      </div>
+
+      <!--Line break-->
+      <hr class="horizontal">
+
+      <div class="cardsDiv">
+          <!-- Cards Table -->
+          <table class="cardsTable" id="cardsTable">
+              <tr>
+                  <th></th>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Rating</th>
+              </tr>
+              <tr>
+                  <td><input type="radio" value=1001 name="radio" id="radio1"></td>
+                  <td>2nd Microwave in breakroom</td>
+                  <td>I would like there to be a second microwave in the breakroom so that we can warm up our food without needing to wait 20 minutes to warm up my food</td>
+                  <td>80%</td>
+              </tr>
+              <tr>
+                  <td><input type="radio" value=1002 name="radio" id="radio2"></td>
+                  <td>Allow employees to park anywhere</td>
+                  <td>Having assigned parking is unfair. Some staff members have to park in the furthest spot even if there are open spots near the office entry</td>
+                  <td>50%</td>
+              </tr>
+          </table>
+      </div>
+
+      <!--Buttons for Employees-->
+      <div class="blueBtn">
+          <!-- <button id="mgrViewCards" onclick="forwardToCards()">View Cards</button> -->
+          <button id="manageCards">Manage Cards</button>
+      </div>
+    </div>
+    
+  </body>
+</html>
