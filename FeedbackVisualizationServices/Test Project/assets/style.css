@@ -1,0 +1,121 @@
+/* Login Page */
+.center {
+    margin-bottom: 0%;
+    text-align: center;
+    width: 100%;
+  }
+  
+  /* ANY Page */
+  body{
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+  }
+  
+  /* Login Page */
+  .loginForm{
+    display: block;  
+    margin: 0 auto; 
+    width: 400px;
+    font-family: sans-serif;
+  }
+  
+  /* Login Page */
+  #logInBtn{
+    font-family: sans-serif;
+    background-color: dodgerblue;
+    color: white;
+    border-radius: 24px;
+    margin-bottom: 0%;
+    position: fixed;
+    text-align: center;
+    width: 10%;
+  }
+  
+  /* Add Card page */
+  .addBtn, .reset, .menuBtn{
+    color: white;
+    background-color: dodgerblue;
+    border-radius: 24px;
+    padding: 5px 25px;
+    float: left;
+    width: 12%;
+    font-size: 18px;
+  }
+  
+  /* Changes hover color for login button */
+  #logInBtn:hover{
+    background-color: blue;
+  }
+  
+  /* Can be used for ANY page*/
+  /* Logout button */
+  .logOutBtn{
+    color: white;
+    background-color: dodgerblue;
+    border-radius: 24px;
+    padding: 5px 25px;
+    float: right;
+    width: 12%;
+    font-size: 18px;
+  }
+  
+  /* changes color of logout button when hovered */
+  .logOutBtn:hover{
+    background-color: red;
+  }
+  
+  /* Can be used for ANY page*/
+  /* horizontal lines. Needed or else it will wrap around the logout button */
+  .horizontal{
+    display: inline-block;
+    width: 100%;
+    margin: 0%;
+  }
+  
+  /* Used for Employee and Manager Buttons */
+  /* Employee menu button list */
+  .blueBtn button{
+    background-color: dodgerblue;
+    color: white;
+    width: 50%;
+    display: block;
+    margin: auto;
+    padding: 10px 24px;
+    font-size: medium;
+    border-radius: 24px;
+  }
+  
+  .blueBtn button:hover{
+    background-color: blue;
+  }
+  
+  /* CAN be used for any page */
+  /* Position fixed and width is what fixed the centering*/
+  .menuHeader{
+    /* margin-bottom: 0%; */
+    /* margin: 0; */
+    position: fixed;
+    text-align: center;
+    width: 100%;
+  }
+  
+  /* Styling for buttons */
+  .upVote {
+    background-color: rgb(0, 179, 74);
+    color: white;
+  }
+  
+  .downVote {
+    background-color: crimson;
+    color: white;
+  }
+  
+  /* Styling for Table */
+  table, th, td {
+    border: 1px solid black;
+  }
+  
+  th, td {
+    padding: 5px;
+  }
