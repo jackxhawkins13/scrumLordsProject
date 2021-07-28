@@ -1,0 +1,2 @@
+npm init (press enter multiple times until module installed)
+
