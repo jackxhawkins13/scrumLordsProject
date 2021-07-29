@@ -32,7 +32,8 @@ app.post("/",encoder, function(req,res){
     var password = req.body.password;
     connection.query("SELECT * FROM Employees where emp_username = ? and emp_password = ?",[username, password], function(erros,results,fields){
         if (results.length > 0){
-            res.redirect("/welcome");
+            console.log(typeof(results));
+            res.redirect("/employeeMenu");
         } else{
             res.redirect("/");
         }
@@ -41,8 +42,8 @@ app.post("/",encoder, function(req,res){
 });
 
 // When login successfull
-app.get("/welcome", function(req,res){
-    res.sendFile(__dirname + "/welcome.html")
+app.get("/employeeMenu", function(req,res){
+    res.sendFile(__dirname + "/employeeMenu.html")
 });
 
 
