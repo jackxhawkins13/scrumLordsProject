@@ -16,7 +16,8 @@
     <hr class="horizontal">
 
     <!--menu Button-->
-    <button type="button" class="menuBtn" onclick=backToMenu();>Menu</button>
+    <button type="button" class="menuBtn"
+    style="width:12%" onclick=backToMenu();>Menu</button>
     
     <!--Logout Button-->
     <button type="button" class="logOutBtn">Logout</button>
@@ -28,33 +29,32 @@
     <!--Line break-->
     <hr class="horizontal">
 
-    <form id="addCardFormId">
-      <table>
+    <div class = "loginForm">
+      <form id="addCardFormId">
+        <table>
 
-        <tr>
-          <!-- This will be card title-->
-          <td>Title:</td>
-          <td><input type="text" id="titleID" placeholder="Your Suggestion Here" size="50" maxlength="50"
-          required></td>
-        </tr>
-        <tr> 
-          <!-- This will be detail info -->
-          <td>Description:</td>
-          <td><input type="text" id="descriptionID" placeholder="Why you think this is important?" size="200" maxlength="150"
-          required></td>
-        </tr> 
-      </table>
-      <!--Line break-->
-      <hr class="horizontal">
+          <tr>
+            <!-- This will be card title-->
+            <td>Title:</td>
+            <td><input type="text" id="titleId" placeholder="Your Suggestion Here" size="50%" maxlength="50"
+            required></td>
+          </tr>
+          <tr> 
+            <!-- This will be detail info -->
+            <td>Description:</td>
+            <td><input type="text" id="descriptionId" placeholder="Why you think this is important?" size="50%" maxlength="150"
+            required></td>
+          </tr> 
+        </table>
+        <!--Line break-->
+        <hr class="horizontal" style="width:100%">
 
-      <!--Add Button-->
-      <button type="button" class="addBtn" onclick="addCards(this.form)">Add</button>
-      
-      <!--Clear Button-->
-      <input type="reset" class="reset" value="Clear">
-    </form>
-
-    
-    
-</body>
+        <!--Add Button-->
+        <button type="button" class="addBtn" onclick="addCard(this.form)">Add</button>
+        
+        <!--Clear Button-->
+        <button type="button" class="reset" onclick= "clearInputs(this.form)">Clear</button>
+      </form>
+    </div>
+  </body>
 </html>
