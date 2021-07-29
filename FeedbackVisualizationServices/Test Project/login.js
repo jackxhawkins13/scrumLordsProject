@@ -42,11 +42,15 @@ app.post("/",encoder, function(req,res){
     var username = req.body.username;
     var password = req.body.password;
     connection.query("SELECT * FROM Employees WHERE emp_username = ? AND emp_password = ?",[username, password], function(errors,results,fields){
+        // Redirect user to employeeMenu
         if (results[0].is_manager == 0){
             res.redirect("/employeeMenu");
-        } else if (results[0].is_manager == 1){
+        }
+        // redirect user to maangerMenu
+        else if (results[0].is_manager == 1){
             res.redirect("/managerMenu");
         }
+        // otherwise, redirect to index.html
         else{
             res.redirect("/");
         }
