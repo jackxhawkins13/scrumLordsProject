@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="assets/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <!-- Page Header-->
+    <h2 class="center">HAF - Feedback Visualization Services</h2>
+
+    <!--Line break-->
+    <hr class="horizontal">
+    
+    <!--Logout Button-->
+    <button type="button" class="logOutBtn">Logout</button>
+
+    <div>
+        <h3 class="menuHeader">Menu - Employee </h3>
+    </div>
+        
+    <!--Line break-->
+    <hr class="horizontal">
+
+    <div class="cardsDiv">
+        <!-- Cards Table -->
+        <table class="cardsTable" id="cardsTable">
+            <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Rating</th>
+            </tr>
+            <tr>
+                <td><input type="radio" value=1001 name="radio" id="radio1"></td>
+                <td>2nd Microwave in breakroom</td>
+                <td>I would like there to be a second microwave in the breakroom so that we can warm up our food without needing to wait 20 minutes to warm up my food</td>
+                <td>80%</td>
+            </tr>
+            <tr>
+                <td><input type="radio" value=1002 name="radio" id="radio2"></td>
+                <td>Allow employees to park anywhere</td>
+                <td>Having assigned parking is unfair. Some staff members have to park in the furthest spot even if there are open spots near the office entry</td>
+                <td>50%</td>
+            </tr>
+        </table>
+    </div>
+
+    <!--Buttons for Employees-->
+    <div class="blueBtn">
+        <!-- <button id="viewCards" onclick="forwardToCards()">View Cards</button> -->
+        <button id="addCards" onclick="forwardToAddCards()">Add Cards</button>
+        <button id="myCards">My Cards</button>
+        <button id="rateCards" onclick="rateCards()">Rate Cards</button>
+    </div>
+</body>
+</html>
