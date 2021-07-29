@@ -39,7 +39,7 @@
                 <td><input type="radio" value=1001 name="radio" id="radio1"></td>
                 <td>2nd Microwave in breakroom</td>
                 <td>I would like there to be a second microwave in the breakroom so that we can warm up our food without needing to wait 20 minutes to warm up my food</td>
-                <td>80%</td>
+                <td id="microwave">80%</td>
             </tr>
             <tr>
                 <td><input type="radio" value=1002 name="radio" id="radio2"></td>
@@ -57,8 +57,11 @@
         <button id="myCards">My Cards</button>
         <button id="rateCards" onclick="rateCards()">Rate Cards</button>
     </div>
-    
 
+    <!-- Insert this code below the Buttons for Employees (Add, My Cards, Rate Cards)
+        in employeeMenu.html  -->
+    <button id="upVote"  class="upVote center" onclick="voteYes()">Yes!</button>
+    <button id="downVote"  class="downVote center" onclick="voteNo()">No!</button>
     
 </body>
 </html>

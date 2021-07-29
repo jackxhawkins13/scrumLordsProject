@@ -32,6 +32,12 @@ var cardId = "";
 var cardTitle = "";
 var cardDescription = "";
 
+// variables for rating system
+var cardYesVotes = 0;
+var cardNoVotes = 0;
+var cardTotalVotes = 0;
+var cardRating = 0;
+
 var cardsTable;
 
 function init() {
@@ -111,6 +117,13 @@ function backToMenu() {
     }
 }
 
+//VOTING FUNCTIONS AND BUTTONS CREATED BELOW
+
+/* Rate Cards Function: User selects a card to rate, then clicks "Rate Cards" button.
+    * When button is clicked, UI shows "upvote" and "downvote" buttons for the user.
+    * Voting functions described below 
+*/
+
 function rateCards() {
     btns = document.querySelectorAll('input[name="radio"]');
     let selection;
@@ -124,14 +137,51 @@ function rateCards() {
         alert("You haven't select a card to rate! Please try again!")
     }
     else{
-        let ratings = prompt("Please rate selected card! (Enter 0-100)");
-        if (ratings >= 0 && ratings <= 100){
-            console.log(ratings);
-        } 
-        else {
-            alert("Entry Invalid! Please try again!");
-        }
-
+        document.getElementById("upVote").style.visibility = "visible";
+        document.getElementById("downVote").style.visibility = "visible";
     }
+}
 
+/* Voting Functions: User clicks on either "Yes" or "No" to vote if they approve of the card or not.
+    * The buttons are invisible until the user chooses to vote. Once they have clicked "Rate Cards" the buttons will appear.
+    * User will be allowed to vote once and then the buttons go away.
+    * Buttons will keep track of whether the vote was for "yes" or "no" as well as a total amount of votes cast.
+    * The approval rating is based on the number of "yes" votes divided by the total number of votes. 
+*/
+
+/* TODO (Essential): 
+    * Finish button styling.
+    * Update DOM so that the "Rating" column on the card table reflects the actual value, not the hardcoded value.
+    * Query statements so the rating value is inserted into the Database
+*/
+
+/* TODO (Nice to have):
+    * Make it so a user cannot vote yes or no repeatedly on the same card.
+    * The user should be able to change their vote from one to the other, but should not be allowed to hit the same button repeatedly to stack the votes.
+*/
+
+function voteYes(){
+    cardYesVotes += 1;
+    cardTotalVotes += 1;
+    document.getElementById("upVote").style.visibility = "hidden";
+    document.getElementById("downVote").style.visibility = "hidden";
+    cardRating = (cardYesVotes/cardTotalVotes)*100;
+    console.log(cardYesVotes, cardNoVotes, cardTotalVotes, cardRating)
+
+    //Add DOM statement here that will change the Ratings column in the table.
+    //This statement is just an example, but we will need a universal one to work on ALL cards that are added.
+    document.getElementById("microwave").innerHTML = cardRating.toFixed(0) + "%";
+}
+
+function voteNo(){
+    cardNoVotes += 1;
+    cardTotalVotes += 1;
+    document.getElementById("downVote").style.visibility = "hidden";
+    document.getElementById("upVote").style.visibility = "hidden";
+    cardRating = (cardYesVotes/cardTotalVotes)*100;
+    console.log(cardYesVotes, cardNoVotes, cardTotalVotes, cardRating)
+
+    //Add DOM statement here that will change the Ratings column in the table.
+    //This statement is just an example, but we will need a universal one to work on ALL cards that are added.
+    document.getElementById("microwave").innerHTML = cardRating.toFixed(0) + "%";
 }
