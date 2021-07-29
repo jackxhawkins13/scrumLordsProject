@@ -32,7 +32,6 @@ app.post("/",encoder, function(req,res){
     var password = req.body.password;
     connection.query("SELECT * FROM Employees where emp_username = ? and emp_password = ?",[username, password], function(erros,results,fields){
         if (results.length > 0){
-            console.log(typeof(results));
             res.redirect("/employeeMenu");
         } else{
             res.redirect("/");
