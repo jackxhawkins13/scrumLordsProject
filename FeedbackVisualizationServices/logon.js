@@ -3,6 +3,10 @@ let http = require("http");
 let mysql = require("mysql");
 let events = require("events");
 
+const express = require("express");
+const app = express();
+app.use("/assets", express.static("assets"));
+
 let inputPassword = "";
 let inputUsername = "";
 let httpServer = http.createServer(processRequest);
@@ -96,14 +100,11 @@ function processResult(err, result) {
 function checkLogin(record) {
     console.log(record);
 
-    if (record.emp_username == inputUsername) {
-        if (record.emp_password == inputPassword) {
-            loginStatus = false;
+    if (record.emp_username == inputUsername && record.emp_password == inputPassword) {
+        loginStatus = false;
             console.log("login successful!");
-            
             return false;
 
-        }
     } else {
         loginStatus = true;
         console.log("login unsuccessful! Please try again!");
@@ -112,3 +113,7 @@ function checkLogin(record) {
 }
 
 
+// redirect here
+app.get("/employeeMenu", function(req,res){
+    res.sendFile(__dirname + "/employeeMenu.html")
+});

@@ -1,6 +1,7 @@
 const mysql = require("mysql");
 const express = require("express");
 const bodyParser = require("body-parser");
+const { query } = require("express");
 const encoder = bodyParser.urlencoded();
 
 
@@ -21,26 +22,43 @@ connection.connect(function(error){
 
 });
 
+// // ///////////////////////////////////////////
+// function processResult(err, result){
+//     if (err){
+//         console.log(err);
+//         throw(err);
+//     }
+
+//     result.every(chec)
+// }
+// //////////////////////////////////////////////
 
 app.get("/",function(req,res){
     res.sendFile(__dirname +"/index.html");
 });
-
+ 
 // Authenticate here
 app.post("/",encoder, function(req,res){
     var username = req.body.username;
     var password = req.body.password;
-    connection.query("SELECT * FROM Employees where emp_username = ? and emp_password = ?",[username, password], function(erros,results,fields){
-        if (results.length > 0){
+    connection.query("SELECT * FROM Employees WHERE emp_username = ? AND emp_password = ?",[username, password], function(errors,results,fields){
+        if (results[0].is_manager == 0){
             res.redirect("/employeeMenu");
-        } else{
+        } else if (results[0].is_manager == 1){
+            res.redirect("/managerMenu");
+        }
+        else{
             res.redirect("/");
         }
         res.end();
-    })
+    });
 });
 
 // When login successfull
+app.get("/managerMenu", function(req,res){
+    res.sendFile(__dirname + "/managerMenu.html")
+});
+
 app.get("/employeeMenu", function(req,res){
     res.sendFile(__dirname + "/employeeMenu.html")
 });
