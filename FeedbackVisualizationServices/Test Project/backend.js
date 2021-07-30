@@ -63,6 +63,8 @@ app.get("/employeeMenu", function(req,res){
 app.listen(4000);
 
 
+
+//added card
 app.get("/managerMenu", function(req,res){
     let title = req.body.title
     let description = req.body.description
@@ -83,21 +85,21 @@ app.get("/managerMenu", function(req,res){
 
 
 // from script.js
-function addCards(form){
-    if (!form.checkValidity()) {
-        alter("See highlighted input boxes, there are input errors");
-    } else {
-        cardTitle = getValue("titleID");
-        cardDescription = getValue("descriptionID");
-        var newCard = new Card();
-        newCard.add();
-        newCard.cardId = Card.sum;
-        newCard.title = cardTitle;
-        newCard.description = cardDescription;
-        newCard.status = "Request";
-        newCard.rating = "0%";
-        // **********need to correct later: get account information
-        newCard.author = "author";
-        console.log("id: "+ newCard.cardId+ "\ntitle: "+newCard.title+"\ndescription: " + newCard.description+ "\nstatus: "+ newCard.status+"\nratings: "+newCard.rating+"\nauthor: "+newCard.author);
-    }
-}
+// function addCards(form){
+//     if (!form.checkValidity()) {
+//         alter("See highlighted input boxes, there are input errors");
+//     } else {
+//         cardTitle = getValue("titleID");
+//         cardDescription = getValue("descriptionID");
+//         var newCard = new Card();
+//         newCard.add();
+//         newCard.cardId = Card.sum;
+//         newCard.title = cardTitle;
+//         newCard.description = cardDescription;
+//         newCard.status = "Request";
+//         newCard.rating = "0%";
+//         // **********need to correct later: get account information
+//         newCard.author = "author";
+//         console.log("id: "+ newCard.cardId+ "\ntitle: "+newCard.title+"\ndescription: " + newCard.description+ "\nstatus: "+ newCard.status+"\nratings: "+newCard.rating+"\nauthor: "+newCard.author);
+//     }
+// }
