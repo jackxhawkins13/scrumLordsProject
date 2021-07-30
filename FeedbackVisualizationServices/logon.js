@@ -11,7 +11,7 @@ let inputPassword = "";
 let inputUsername = "";
 let httpServer = http.createServer(processRequest);
 
-let filmSelectionIndex = 999;
+
 
 let res;
 
@@ -103,8 +103,16 @@ function checkLogin(record) {
     if (record.emp_username == inputUsername && record.emp_password == inputPassword) {
         loginStatus = false;
             console.log("login successful!");
+<<<<<<< Updated upstream
             return false;
 
+=======
+            successfulLogin();
+            return false;
+
+
+        }
+>>>>>>> Stashed changes
     } else {
         loginStatus = true;
         console.log("login unsuccessful! Please try again!");
@@ -113,7 +121,13 @@ function checkLogin(record) {
 }
 
 
+<<<<<<< Updated upstream
 // redirect here
 app.get("/employeeMenu", function(req,res){
     res.sendFile(__dirname + "/employeeMenu.html")
 });
+=======
+function successfulLogin() {
+    
+}
+>>>>>>> Stashed changes
