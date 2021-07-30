@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Cards</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="addCardScript.js"></script>
+</head>
+
+<body>
+    <!-- Page Header-->
+    <h2 class="center">HAF - Feedback Visualization Services</h2>
+
+    <!--Line break-->
+    <hr class="horizontal">
+
+    <!--menu Button-->
+    <button type="button" class="menuBtn"
+    style="width:12%" onclick=backToMenu();>Menu</button>
+    
+    <!--Logout Button-->
+    <button type="button" class="logOutBtn">Logout</button>
+
+    <div>
+        <h3 class="menuHeader">Add Cards</h3>
+    </div>
+        
+    <!--Line break-->
+    <hr class="horizontal">
+
+    <div class = "loginForm">
+      <form id="addCardFormId">
+        <table>
+
+          <tr>
+            <!-- This will be card title-->
+            <td>Title:</td>
+            <td><input type="text" id="titleId" placeholder="Your Suggestion Here" size="50%" maxlength="50"
+            required></td>
+          </tr>
+          <tr> 
+            <!-- This will be detail info -->
+            <td>Description:</td>
+            <td><input type="text" id="descriptionId" placeholder="Why you think this is important?" size="50%" maxlength="150"
+            required></td>
+          </tr> 
+        </table>
+        <!--Line break-->
+        <hr class="horizontal" style="width:100%">
+
+        <!--Add Button-->
+        <button type="button" class="addBtn" onclick="addCard(this.form)">Add</button>
+        
+        <!--Clear Button-->
+        <button type="button" class="reset" onclick= "clearInputs(this.form)">Clear</button>
+      </form>
+    </div>
+  </body>
+</html>

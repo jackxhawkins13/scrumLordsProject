@@ -3,10 +3,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { query } = require("express");
 const encoder = bodyParser.urlencoded();
-
+var path = require("path")
 
 const app = express();
-app.use("/assets", express.static("assets"));
+app.use("/public", express.static("public"));
+
 
 const connection = mysql.createConnection({
     host: "107.180.1.16",
@@ -21,17 +22,6 @@ connection.connect(function(error){
     else console.log("Connected to the DB SUCCESSFULLY!")
 
 });
-
-// // ///////////////////////////////////////////
-// function processResult(err, result){
-//     if (err){
-//         console.log(err);
-//         throw(err);
-//     }
-
-//     result.every(chec)
-// }
-// //////////////////////////////////////////////
 
 app.get("/",function(req,res){
     res.sendFile(__dirname +"/index.html");
@@ -51,7 +41,7 @@ app.post("/",encoder, function(req,res){
             res.redirect("/managerMenu");
         }
         // otherwise, redirect to index.html
-        else{
+        else {
             res.redirect("/");
         }
         res.end();
