@@ -111,9 +111,10 @@ body{
   color: white;
 }
 
-/* Styling for Table */
+/* Styling for loginform Table */
 table, th, td {
   border: 1px solid black;
+  position: relative;
 }
 
 th, td {
@@ -125,6 +126,4 @@ th, td {
 /*If the input is null then the input box will turn red */
 input:invalid 			{ border: 2px solid #A00000; }
 input:focus:invalid 	{ color: red; }
-
-
 
