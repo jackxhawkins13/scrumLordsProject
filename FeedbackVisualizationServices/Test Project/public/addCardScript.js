@@ -10,13 +10,13 @@ function addCard(form){
   else{
 
     // Card Title will = whats in the titleId box 
-    cardTitle = document.getElementById("titleId");
+    cardTitle = document.getElementById("title");
 
     // Logging it to prove it 
     console.log("Card Title:", cardTitle.value);
 
     // Card Title will = whats in the descriptionId box 
-    cardDescription = document.getElementById("descriptionId");
+    cardDescription = document.getElementById("description");
 
     //Logging it to prove it 
     console.log("Card description:", cardDescription.value);

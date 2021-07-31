@@ -49,12 +49,12 @@ app.post("/",encoder, function(req,res){
 });
 
 // When login successfull
-app.get("/managerMenu", function(req,res){
-    res.sendFile(__dirname + "/managerMenu.html")
+app.get("/public/managerMenu", function(req,res){
+    res.sendFile(__dirname + "/public/managerMenu.html")
 });
 
-app.get("/employeeMenu", function(req,res){
-    res.sendFile(__dirname + "/employeeMenu.html")
+app.get("/public/employeeMenu", function(req,res){
+    res.sendFile(__dirname + "/public/employeeMenu.html")
 });
 
 

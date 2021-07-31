@@ -77,7 +77,7 @@ function logout() {
 }
 
 function forwardToAddCards(){
-    location.href="public/addCard.html";
+    location.href="addCard.html";
 }
 
 // get value by id
