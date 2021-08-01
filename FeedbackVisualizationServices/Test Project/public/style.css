@@ -119,3 +119,7 @@
   th, td {
     padding: 5px;
   }
+
+  /*If the input is null then the input box will turn red */
+input:invalid 			{ border: 2px solid #A00000; }
+input:focus:invalid 	{ color: red; }
