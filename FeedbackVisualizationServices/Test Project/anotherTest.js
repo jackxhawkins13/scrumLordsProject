@@ -1,4 +1,4 @@
-var query=require("./query.js");
+var query = require("./query.js");
 const express = require("express");
 const bodyParser = require("body-parser");
 const encoder = bodyParser.urlencoded();
@@ -10,14 +10,14 @@ const app = express();
 app.use("/public", express.static("public"));
 
 app.get("/",function(req,res){
-    res.sendFile(__dirname + "/index.html");
+    res.sendFile(__dirname + "/index.html"); 
 });
 
 // can delete /////////////
 app.post("/",encoder, function(req,res){
     var username = req.body.username;
     var password = req.body.password;
-    query("SELECT * FROM Employees WHERE emp_username = ? AND emp_password = ?",[username, password],function(err,fields){
+    query("SELECT * FROM Employees WHERE emp_username = ? AND emp_password = ?",[username, password], function(err,fields){
         res.redirect("/public/employeeMenu.html");
     });
 })
