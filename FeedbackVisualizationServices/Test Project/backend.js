@@ -63,27 +63,26 @@ app.post("/", encoder, function (req, res) {
     var username = req.body.username;
     var password = req.body.password;
     connection.query("SELECT * FROM Employees WHERE emp_username = ? AND emp_password = ?", [username, password], function (errors, results, fields) {
-        if (errors) throw errors
-
-        // Redirect user to employeeMenu
-        if (results[0]["is_manager"] == 0) {
-            console.log("log in as employee");
-
-            res.redirect("/public/employeeMenu.html");
+      // Check if results > 0
+    if (results.length > 0){        
+        if (results[0].is_manager == 0){
+            res.redirect("/public/employeeMenu");
         }
         // redirect user to maangerMenu
-        else if (results[0]["is_manager"] == 1) {
-            console.log("log in as manager");
-            res.sendFile(__dirname + "/public/managerMenu.html");
-            res.redirect("/public/managerMenu.html");
+        else if (results[0].is_manager == 1){
+            res.redirect("/public/managerMenu");
         }
         // otherwise, redirect to index.html
         else {
             res.redirect("/");
         }
-        res.end();
+        res.end;
+    } //If not > 0, refresh page
+    else{
+        res.redirect("/");
     }
-    );
+        res.end();
+    });
 });
 
 // When login successfull
