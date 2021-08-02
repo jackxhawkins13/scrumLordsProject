@@ -18,33 +18,35 @@ let db_config = {
 
 
 //database  connection
-let connection = mysql.createConnection(db_config);
+let connection;
 function handleDisconnect() {
     connection = mysql.createConnection(db_config);
+
+
+
+    // Connect to DB Error handling
+    //solution found: https://stackoverflow.com/questions/20210522/nodejs-mysql-error-connection-lost-the-server-closed-the-connection
+
+    connection.connect(function (err) {              // The server is either down
+        if (err) {                                     // or restarting (takes a while sometimes).
+            console.log('error when connecting to db:', err);
+            console.log('reconnecting');
+            setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
+        }
+        else console.log("Connected to the DB SUCCESSFULLY!") // to avoid a hot loop, and to allow our node script to
+    });                                     // process asynchronous requests in the meantime.
+    // If you're also serving http, display a 503 error.
+
+    connection.on('error', function (err) {
+        console.log('db error', err);
+        if (err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
+            console.log('reconnecting');
+            handleDisconnect();                         // lost due to either server restart, or a
+        } else {                                      // connnection idle timeout (the wait_timeout
+            throw err;                                  // server variable configures this)
+        }
+    });
 }
-
-
-// Connect to DB Error handling
-//solution found: https://stackoverflow.com/questions/20210522/nodejs-mysql-error-connection-lost-the-server-closed-the-connection
-
-connection.connect(function(err) {              // The server is either down
-    if(err) {                                     // or restarting (takes a while sometimes).
-    console.log('error when connecting to db:', err);
-      setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
-    }
-    else console.log("Connected to the DB SUCCESSFULLY!") // to avoid a hot loop, and to allow our node script to
-  });                                     // process asynchronous requests in the meantime.
-                                          // If you're also serving http, display a 503 error.
-
-connection.on('error', function(err) {
-    console.log('db error', err);
-    if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
-      handleDisconnect();                         // lost due to either server restart, or a
-    } else {                                      // connnection idle timeout (the wait_timeout
-      throw err;                                  // server variable configures this)
-    }
-});
-
 handleDisconnect();
 
 
@@ -52,27 +54,27 @@ handleDisconnect();
 
 
 
-app.get("/",function(req,res){
-    res.sendFile(__dirname +"/index.html");
+app.get("/", function (req, res) {
+    res.sendFile(__dirname + "/index.html");
 });
 
 // Authenticate here
-app.post("/",encoder, function(req,res){
+app.post("/", encoder, function (req, res) {
     var username = req.body.username;
     var password = req.body.password;
-    connection.query("SELECT * FROM Employees WHERE emp_username = ? AND emp_password = ?",[username, password], function(errors,results,fields){
+    connection.query("SELECT * FROM Employees WHERE emp_username = ? AND emp_password = ?", [username, password], function (errors, results, fields) {
         if (errors) throw errors
-        
-       // Redirect user to employeeMenu
-        if (results[0]["is_manager"] == 0){
+
+        // Redirect user to employeeMenu
+        if (results[0]["is_manager"] == 0) {
             console.log("log in as employee");
 
             res.redirect("/public/employeeMenu.html");
         }
         // redirect user to maangerMenu
-        else if (results[0]["is_manager"] == 1){
+        else if (results[0]["is_manager"] == 1) {
             console.log("log in as manager");
-            res.sendFile(__dirname +"/public/managerMenu.html");
+            res.sendFile(__dirname + "/public/managerMenu.html");
             res.redirect("/public/managerMenu.html");
         }
         // otherwise, redirect to index.html
@@ -85,22 +87,22 @@ app.post("/",encoder, function(req,res){
 });
 
 // When login successfull
-app.get("/managerMenu", function(req,res){
+app.get("/managerMenu", function (req, res) {
     res.sendFile(__dirname + "/managerMenu.html")
 });
 
-app.get("/employeeMenu", function(req,res){
+app.get("/employeeMenu", function (req, res) {
     res.sendFile(__dirname + "/employeeMenu.html")
 });
 //added card
-app.get("/managerMenu", function(req,res){
+app.get("/managerMenu", function (req, res) {
     let title = req.body.title
     let description = req.body.description
-    
-    connection.query(`Insert into Cards (card_title, card_description) values (?, ?);`,[title, description], function(errors,results,fields){
+
+    connection.query(`Insert into Cards (card_title, card_description) values (?, ?);`, [title, description], function (errors, results, fields) {
         if (err) {
             console.log(err);
-        }else {
+        } else {
             console.log(`added ${title} and ${description} to the database.`)
         }
     })
