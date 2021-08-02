@@ -5,6 +5,11 @@ const { query } = require("express");
 const encoder = bodyParser.urlencoded();
 var path = require("path")
 
+
+
+
+
+
 const app = express();
 app.use("/public", express.static("public"));
 
@@ -65,12 +70,12 @@ app.post("/", encoder, function (req, res) {
     connection.query("SELECT * FROM Employees WHERE emp_username = ? AND emp_password = ?", [username, password], function (errors, results, fields) {
       // Check if results > 0
     if (results.length > 0){        
-        if (results[0].is_manager == 0){
-            res.redirect("/public/employeeMenu");
+        if (results[0]["is_manager"] == 0){
+            res.redirect("/public/employeeMenu.html");
         }
         // redirect user to maangerMenu
-        else if (results[0].is_manager == 1){
-            res.redirect("/public/managerMenu");
+        else if (results[0]["is_manager"] == 1){
+            res.redirect("/public/managerMenu.html");
         }
         // otherwise, redirect to index.html
         else {
@@ -85,28 +90,32 @@ app.post("/", encoder, function (req, res) {
     });
 });
 
-// When login successfull
-app.get("/managerMenu", function (req, res) {
-    res.sendFile(__dirname + "/managerMenu.html")
-});
+// // When login successfull NOT LONGER USEFUL
+// app.get("/managerMenu", function (req, res) {
+//     res.sendFile(__dirname + "/managerMenu.html")
+// });
 
-app.get("/employeeMenu", function (req, res) {
-    res.sendFile(__dirname + "/employeeMenu.html")
-});
+// app.get("/employeeMenu", function (req, res) {
+//     res.sendFile(__dirname + "/employeeMenu.html")
+// });
 //added card
-app.get("/managerMenu", function (req, res) {
-    let title = req.body.title
-    let description = req.body.description
+app.post("/public/addCard",encoder, function (req, res) {
+    console.log(req.body);
+    let title = req.body.title;
+    let description = req.body.description;
 
+    console.log("adding new cards");
     connection.query(`Insert into Cards (card_title, card_description) values (?, ?);`, [title, description], function (errors, results, fields) {
-        if (err) {
-            console.log(err);
+        if (errors) {
+            console.log(errors);
         } else {
             console.log(`added ${title} and ${description} to the database.`)
         }
     })
-
-
+    console.log("added new cards");
+    res.redirect("/public/addCard.html")
+    res.end();
+    
 });
 
 

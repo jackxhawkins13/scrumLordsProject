@@ -32,7 +32,7 @@
     <hr class="horizontal">
 
     <div class = "loginForm">
-      <form id="addCardFormId">
+      <form id="addCardFormId" action="/public/addCard" method="POST">
         <table>
 
           <tr>
@@ -52,7 +52,7 @@
         <hr class="horizontal" style="width:100%">
 
         <!--Add Button-->
-        <button type="button" class="addBtn" onclick="addCard(this.form)">Add</button>
+        <button type="submit" class="addBtn" onclick="addCard(this.form)">Add</button>
         
         <!--Clear Button-->
         <button type="button" class="reset" onclick= "clearInputs(this.form)">Clear</button>
