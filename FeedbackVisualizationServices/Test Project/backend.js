@@ -105,7 +105,7 @@ app.post("/public/addCard",encoder, function (req, res) {
     let description = req.body.description;
 
     console.log("adding new cards");
-    connection.query(`Insert into Cards (card_title, card_description) values (?, ?);`, [title, description], function (errors, results, fields) {
+    connection.query(`Insert into Cards (card_title, card_description, card_status, card_rating) values (?, ?, "Requested", 0);`, [title, description], function (errors, results, fields) {
         if (errors) {
             console.log(errors);
         } else {
