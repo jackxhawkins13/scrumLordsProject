@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Anonymous Sugestion Box</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <script src="script.js"></script>
+    <link href="public/style.css" rel="stylesheet" type="text/css" />
+    <!-- <script src="public/script.js"></script> -->
+    <script src="backend.js"></script>
   </head>
   <body>
     <script src="script.js"></script>
@@ -17,26 +18,26 @@
     <hr class="horizontal">
 
     <!-- Login form  -->
-    <form class="loginForm" method="get" action="http://localhost:8080/">
+    <form class="loginForm" action="/" method="POST">
       <table>
 
         <tr>
           <!-- This will be employee id info-->
           <td>Employee ID:</td>
-          <td><input type="text" name="employeeID" id="employeeID" placeholder="Employee ID"
+          <td><input class="input-field" type="text" name="username" id="employeeID" placeholder="Employee ID"
           required></td>
           </tr>
         <tr> 
           <!-- This will be employee login info -->
           <td>Employee Password:</td>
-          <td><input type="text" name ="employeePassword" id="employeePassword" placeholder="Password"
+          <td><input class="input-field" name="password" type="text" name ="employeePassword" id="employeePassword" placeholder="Password"
           required></td>
         </tr> 
 
         
       </table>
 
-      <input class="blueBtn" id="logInBtn" type="submit" value="Login">
+      <input class="blueBtn" id="logInBtn" type="submit" value="LOGIN">
       <!-- the actual button -->
       <!-- <button class="blueBtn" id="logInBtn" type="button" onclick="">Login</button> -->
 

@@ -1,0 +1,4 @@
+npm init (press enter multiple times until module installed)
+npm install mysql
+npm install express
+npm install body-parser

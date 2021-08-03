@@ -78,9 +78,7 @@ function logout() {
 
 
 function forwardToAddCards () {
-    document.getElementById("addCardPage").style.display="";
-    document.getElementById("employee").style.display="none";
-    document.getElementById("addCardFormId").reset();
+    location.href="addCard.html";
 }
 
 // get value by id
