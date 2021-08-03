@@ -104,11 +104,27 @@ body{
 .upVote {
   background-color: rgb(0, 179, 74);
   color: white;
+  width: 25%;
+  float: left;
+  visibility: hidden;
+  display: block;
+  margin-left: 25%;
+  padding: 10px 24px;
+  font-size: medium;
+  border-radius: 24px;
 }
 
 .downVote {
   background-color: crimson;
   color: white;
+  width: 25%;
+  float: left;
+  visibility: hidden;
+  display: block;
+  margin-right: 25%;
+  padding: 10px 24px;
+  font-size: medium;
+  border-radius: 24px;
 }
 
 /* Styling for loginform Table */
