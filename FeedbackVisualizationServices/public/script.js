@@ -41,10 +41,6 @@ var cardRating = 0;
 var cardsTable;
 
 function init() {
-    document.getElementById("employee").style.display="none";
-    document.getElementById("addCardPage").style.display="none";
-    document.getElementById("manager").style.display="none";
-    
 }
 
 function EMinitialize() {
@@ -53,29 +49,7 @@ function EMinitialize() {
 
 function login() {
     if (err) throw err;
-
-
-    if (getValue("employeeID") == "admin"){
-        document.getElementById("login").style.display="none";
-        document.getElementById("manager").style.display="";
-        document.getElementById("addCardPage").style.display="none";
-    }else {
-        document.getElementById("login").style.display="none";
-        document.getElementById("employee").style.display="";
-        document.getElementById("addCardPage").style.display="none";
-    }
-        
-    
 }
-
-function logout() {
-    document.getElementById("login").style.display="";
-    document.getElementById("employee").style.display="none";
-    document.getElementById("addCardPage").style.display="none";
-    document.getElementById("loginForm").reset();
-    document.getElementById("manager").style.display="none";
-}
-
 
 function forwardToAddCards () {
     location.href="addCard.html";
@@ -109,8 +83,7 @@ function addCards(form){
 function backToMenu() {
     let confirmation = confirm("Unsaved change will be lost! Are you sure back to menu?");
     if (confirmation == true) {
-        document.getElementById("addCardPage").style.display="none";
-        document.getElementById("employee").style.display="";
+// redirect back to menu
 
     }
 }
