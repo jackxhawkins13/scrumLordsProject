@@ -121,14 +121,8 @@ function rateCards() {
 */
 
 /* TODO (Essential): 
-    * Finish button styling.
     * Update DOM so that the "Rating" column on the card table reflects the actual value, not the hardcoded value.
     * Query statements so the rating value is inserted into the Database
-*/
-
-/* TODO (Nice to have):
-    * Make it so a user cannot vote yes or no repeatedly on the same card.
-    * The user should be able to change their vote from one to the other, but should not be allowed to hit the same button repeatedly to stack the votes.
 */
 
 function voteYes(){
