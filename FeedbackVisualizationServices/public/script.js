@@ -126,12 +126,15 @@ function rateCards() {
 */
 
 function voteYes(){
-    cardYesVotes += 1;
-    cardTotalVotes += 1;
-    document.getElementById("upVote").style.visibility = "hidden";
-    document.getElementById("downVote").style.visibility = "hidden";
-    cardRating = (cardYesVotes/cardTotalVotes)*100;
-    console.log(cardYesVotes, cardNoVotes, cardTotalVotes, cardRating)
+    if(confirm("You are about to vote 'Yes' on this card?"))
+    {
+        cardYesVotes += 1;
+        cardTotalVotes += 1;
+        document.getElementById("upVote").style.visibility = "hidden";
+        document.getElementById("downVote").style.visibility = "hidden";
+        cardRating = (cardYesVotes/cardTotalVotes)*100;
+        console.log(cardYesVotes, cardNoVotes, cardTotalVotes, cardRating)
+    }
 
     //Add DOM statement here that will change the Ratings column in the table.
     //This statement is just an example, but we will need a universal one to work on ALL cards that are added.
@@ -139,14 +142,16 @@ function voteYes(){
 }
 
 function voteNo(){
-    cardNoVotes += 1;
-    cardTotalVotes += 1;
-    document.getElementById("downVote").style.visibility = "hidden";
-    document.getElementById("upVote").style.visibility = "hidden";
-    cardRating = (cardYesVotes/cardTotalVotes)*100;
-    console.log(cardYesVotes, cardNoVotes, cardTotalVotes, cardRating)
+        if(confirm("You are about to vote 'No' on this card?")){
+        cardNoVotes += 1;
+        cardTotalVotes += 1;
+        document.getElementById("downVote").style.visibility = "hidden";
+        document.getElementById("upVote").style.visibility = "hidden";
+        cardRating = (cardYesVotes/cardTotalVotes)*100;
+        console.log(cardYesVotes, cardNoVotes, cardTotalVotes, cardRating)
 
-    //Add DOM statement here that will change the Ratings column in the table.
-    //This statement is just an example, but we will need a universal one to work on ALL cards that are added.
-    document.getElementById("microwave").innerHTML = cardRating.toFixed(0) + "%";
+        //Add DOM statement here that will change the Ratings column in the table.
+        //This statement is just an example, but we will need a universal one to work on ALL cards that are added.
+        document.getElementById("microwave").innerHTML = cardRating.toFixed(0) + "%";
+    }
 }
