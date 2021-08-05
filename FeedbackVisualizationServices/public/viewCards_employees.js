@@ -41,6 +41,7 @@ function init(){
         // assign value to celss
         cell0.innerHTML = cards[i].title;
         cell1.innerHTML = cards[i].description;
+    }
 }
 
 
