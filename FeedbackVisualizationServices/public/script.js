@@ -1,6 +1,6 @@
 class Card {
-    static sum=0;
-    constructor(cardId, title, description, status, rating, author){
+    static sum = 0;
+    constructor(cardId, title, description, status, rating, author) {
         this.cardId = cardId;
         this.title = title;
         this.description = description;
@@ -8,13 +8,13 @@ class Card {
         this.rating = rating;
         this.author = author;
     }
-    add(){
+    add() {
         Card.sum++;
     }
 }
 
 class Employee {
-    constructor(employeeId, password){
+    constructor(employeeId, password) {
         this.employeeId = employeeId;
         this.password = password;
     }
@@ -22,7 +22,7 @@ class Employee {
 }
 
 class Manager extends Employee {
-    constructor(employeeId, password){
+    constructor(employeeId, password) {
         super(employeeId, password);
     }
 }
@@ -37,6 +37,8 @@ var cardYesVotes = 0;
 var cardNoVotes = 0;
 var cardTotalVotes = 0;
 var cardRating = 0;
+var votedYes = false;
+var votedNo = false;
 
 var cardsTable;
 
@@ -44,24 +46,24 @@ function init() {
 }
 
 function EMinitialize() {
-    cardsTable=document.getElementById("cardsTable");
+    cardsTable = document.getElementById("cardsTable");
 }
 
 function login() {
     if (err) throw err;
 }
 
-function forwardToAddCards () {
-    location.href="addCard.html";
+function forwardToAddCards() {
+    location.href = "addCard.html";
 }
 
 // get value by id
 function getValue(id) {
-	return String(document.getElementById(id).value);
+    return String(document.getElementById(id).value);
 }
 
 // add cards
-function addCards(form){
+function addCards(form) {
     if (!form.checkValidity()) {
         alter("See highlighted input boxes, there are input errors");
     } else {
@@ -76,14 +78,14 @@ function addCards(form){
         newCard.rating = "0%";
         // **********need to correct later: get account information
         newCard.author = "author";
-        console.log("id: "+ newCard.cardId+ "\ntitle: "+newCard.title+"\ndescription: " + newCard.description+ "\nstatus: "+ newCard.status+"\nratings: "+newCard.rating+"\nauthor: "+newCard.author);
+        console.log("id: " + newCard.cardId + "\ntitle: " + newCard.title + "\ndescription: " + newCard.description + "\nstatus: " + newCard.status + "\nratings: " + newCard.rating + "\nauthor: " + newCard.author);
     }
 }
 
 function backToMenu() {
     let confirmation = confirm("Unsaved change will be lost! Are you sure back to menu?");
     if (confirmation == true) {
-// redirect back to menu
+        // redirect back to menu
 
     }
 }
@@ -98,16 +100,16 @@ function backToMenu() {
 function rateCards() {
     btns = document.querySelectorAll('input[name="radio"]');
     let selection;
-    for (const btn of btns){
+    for (const btn of btns) {
         if (btn.checked) {
             selection = btn.value;
             break;
         }
     }
-    if (selection==null){
+    if (selection == null) {
         alert("You haven't select a card to rate! Please try again!")
     }
-    else{
+    else {
         document.getElementById("upVote").style.visibility = "visible";
         document.getElementById("downVote").style.visibility = "visible";
     }
@@ -125,15 +127,20 @@ function rateCards() {
     * Query statements so the rating value is inserted into the Database
 */
 
-function voteYes(){
-    if(confirm("You are about to vote 'Yes' on this card?"))
-    {
-        cardYesVotes += 1;
-        cardTotalVotes += 1;
-        document.getElementById("upVote").style.visibility = "hidden";
-        document.getElementById("downVote").style.visibility = "hidden";
-        cardRating = (cardYesVotes/cardTotalVotes)*100;
-        console.log(cardYesVotes, cardNoVotes, cardTotalVotes, cardRating)
+function voteYes() {
+    if (confirm("You are about to vote 'Yes' on this card?")) {
+        if (votedYes == false) {
+            cardYesVotes += 1;
+            cardTotalVotes += 1;
+            document.getElementById("upVote").style.visibility = "hidden";
+            document.getElementById("downVote").style.visibility = "hidden";
+            cardRating = (cardYesVotes / cardTotalVotes) * 100;
+            console.log(cardYesVotes, cardNoVotes, cardTotalVotes, cardRating)
+            votedYes = true;
+        } else {
+            alert("You have already voted Yes on this card! You can change your vote to No, but not repeatedly vote Yes.")
+        }
+
     }
 
     //Add DOM statement here that will change the Ratings column in the table.
@@ -141,14 +148,20 @@ function voteYes(){
     document.getElementById("microwave").innerHTML = cardRating.toFixed(0) + "%";
 }
 
-function voteNo(){
-        if(confirm("You are about to vote 'No' on this card?")){
-        cardNoVotes += 1;
-        cardTotalVotes += 1;
-        document.getElementById("downVote").style.visibility = "hidden";
-        document.getElementById("upVote").style.visibility = "hidden";
-        cardRating = (cardYesVotes/cardTotalVotes)*100;
-        console.log(cardYesVotes, cardNoVotes, cardTotalVotes, cardRating)
+function voteNo() {
+    if (confirm("You are about to vote 'No' on this card?")) {
+        if (votedNo == false) {
+            cardNoVotes += 1;
+            cardTotalVotes += 1;
+            document.getElementById("downVote").style.visibility = "hidden";
+            document.getElementById("upVote").style.visibility = "hidden";
+            cardRating = (cardYesVotes / cardTotalVotes) * 100;
+            console.log(cardYesVotes, cardNoVotes, cardTotalVotes, cardRating)
+            votedNo = true
+        } else{
+            alert("You have already voted No on this card! You can change your vote to Yes, but not repeatedly vote No.")
+        }
+
 
         //Add DOM statement here that will change the Ratings column in the table.
         //This statement is just an example, but we will need a universal one to work on ALL cards that are added.
