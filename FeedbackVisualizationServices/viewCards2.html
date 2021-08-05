@@ -36,14 +36,11 @@
       //"SELECT"                                
          // "card_title, card_description"       
       //"FROM cards", 
-
       // The purpose of this function is to convert data into a string in JSON for the data we just querryied
       function (data){
         document.getElementById("output").innerHTML=
         json.stringify(data, null, 2);
       }
-
-
     )
     </script>
     -->
@@ -69,30 +66,7 @@
     <hr class="horizontal">
 
     <div class = "container">
-      <form id="addCardFormId" action="/public/addCard" method="POST">
-        <table id="table">
 
-          <tr>
-            <!-- This will be card title-->
-            <th>Title:</th>
-            <th><input type="text" id="titleId" placeholder="Your Suggestion Here" size="50%" maxlength="50"
-            required></th>
-          </tr>
-          <tr> 
-            <!-- This will be detail info -->
-            <th>Description:</th>
-            <td><input type="text" id="descriptionId" placeholder="Why you think this is important?" size="50%" maxlength="150"
-            required></td>
-          </tr> 
-        </table>
-        <!--Line break-->
-        <hr class="horizontal" style="width:100%">
-
-        <!--Add Button-->
-        <button type="button" class="addBtn" onclick="addCard();">Add</button>
-        
-      </form>
-    </div>
     <div id="result">
       <table id="cardTable">
         <tr><th>Cards will display here!</th></tr>
