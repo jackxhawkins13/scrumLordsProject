@@ -14,6 +14,10 @@ const cards = [];
 
 
 var table;
+
+// The purpose of this fucntion is to run on load and crate a table that will insert our 
+// card data
+// insert for cell for rate card button is the only thing missing for this function
 function init(){
     table = document.getElementById("cardTable");
     // we should grab all cards from server and add to array here
@@ -22,6 +26,21 @@ function init(){
             // cards.push(i)
     //}
     // showcard() to list all exist card
+     th = table.insertRow(0);
+    th1 = th.insertCell(0);
+    th2 = th.insertCell(1);
+    th1.innerHTML = "Title";
+    th2.innerHTML = "Description";
+    // pull out all card from cards arrays
+    for (var i = 0; i < cards.length; i++){
+        // insert a new row after header
+        var newRow = table.insertRow(i+1)
+        // insert cells in this newRow
+        cell0 = newRow.insertCell(0);
+        cell1 = newRow.insertCell(1);
+        // assign value to celss
+        cell0.innerHTML = cards[i].title;
+        cell1.innerHTML = cards[i].description;
 }
 
 
@@ -65,23 +84,23 @@ function refreshTable(table) {
 
 
 // Insert all card into a blank table
-function showCard() {
-    th = table.insertRow(0);
-    th1 = th.insertCell(0);
-    th2 = th.insertCell(1);
-    th1.innerHTML = "Title";
-    th2.innerHTML = "Description";
+//function showCard() {
+    //th = table.insertRow(0);
+    //th1 = th.insertCell(0);
+    //th2 = th.insertCell(1);
+    //th1.innerHTML = "Title";
+    //th2.innerHTML = "Description";
     // pull out all card from cards arrays
-    for (var i = 0; i < cards.length; i++){
+    //for (var i = 0; i < cards.length; i++){
         // insert a new row after header
-        var newRow = table.insertRow(i+1)
+        //var newRow = table.insertRow(i+1)
         // insert cells in this newRow
-        cell0 = newRow.insertCell(0);
-        cell1 = newRow.insertCell(1);
+        //cell0 = newRow.insertCell(0);
+        //cell1 = newRow.insertCell(1);
         // assign value to celss
-        cell0.innerHTML = cards[i].title;
-        cell1.innerHTML = cards[i].description;
-    }
+        //cell0.innerHTML = cards[i].title;
+        //cell1.innerHTML = cards[i].description;
+   // }
     
-}
+//}
 
