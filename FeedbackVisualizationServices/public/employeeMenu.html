@@ -17,7 +17,7 @@
     <hr class="horizontal">
     
     <!--Logout Button-->
-    <button type="button" class="logOutBtn">Logout</button>
+    <button type="button" class="logOutBtn" onclick="forwardToLogin()">Logout</button>
 
     <div>
         <h3 class="menuHeader">Menu - Employee </h3>
@@ -30,7 +30,9 @@
     <div class="blueBtn">
         <!-- <button id="viewCards" onclick="forwardToCards()">View Cards</button> -->
         <button id="addCards" onclick="forwardToAddCards()">Add Cards</button>
-        <button id="rateCards" onclick="rateCards()">View Cards and Rate Cards</button>
+        <!-- The next button was to rate Cards -->
+        <!-- <button id="rateCards" onclick="rateCards()">View Cards and Rate Cards</button> -->
+        <button id="viewAndRateCards" onclick="forwardToViewCards()">View and Rate Cards</button>
     </div>
 
     <!-- Insert this code below the Buttons for Employees (Add, My Cards, Rate Cards)

@@ -7,6 +7,7 @@
     <title>Add Cards</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
     <script src="addCardScript.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
     <!-- Page Header-->
@@ -17,10 +18,10 @@
 
     <!--menu Button-->
     <button type="button" class="menuBtn"
-    style="width:12%" onclick=backToMenu();>Menu</button>
+    style="width:12%" onclick="forwardToEmployeeMenu()">Menu</button>
     
     <!--Logout Button-->
-    <button type="button" class="logOutBtn">Logout</button>
+    <button type="button" class="logOutBtn" onclick="forwardToLogin()">Logout</button>
 
     <div>
         <h3 class="menuHeader">Add Cards</h3>

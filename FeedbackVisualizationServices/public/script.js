@@ -57,6 +57,18 @@ function forwardToAddCards() {
     location.href = "addCard.html";
 }
 
+function forwardToEmployeeMenu(){
+    location.href = "employeeMenu.html"
+}
+
+function forwardToViewCards(){
+    location.href = "viewCards_Employees.html"
+}
+
+function forwardToLogin(){
+    location.href = "../index.html"
+}
+
 // get value by id
 function getValue(id) {
     return String(document.getElementById(id).value);
