@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>View Cards</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="public/style.css" rel="stylesheet" type="text/css" />
 
   <!-- I comment out these related files to test temporary_test.js
       Once we done the change, we should modify them for better performance
@@ -17,7 +17,7 @@
   <!-- This script should give us acces to the sql -->
   <!--<script src="http://mysqljs.com/mysql.js"></script>-->
   <script src="viewCards_employees.js"></script>
-  <script src="script.js"></script>
+  <script src="public/script.js"></script>
 
 </head>
 <body id = "datas" onload=init();>
@@ -58,6 +58,7 @@
     
     <!--Logout Button-->
     <button type="button" class="logOutBtn">Logout</button>
+    <div class="blueBtn"><button id="rateCards" onclick="rateCards()">Rate Cards</button></div>
 
     <div>
         <h3 class="menuHeader">View Cards</h3>
