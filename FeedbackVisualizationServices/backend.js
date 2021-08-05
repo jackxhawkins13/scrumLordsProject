@@ -72,10 +72,12 @@ app.post("/", encoder, function (req, res) {
     if (results.length > 0){        
         if (results[0]["is_manager"] == 0){
             res.redirect("/public/employeeMenu.html");
+            console.log("login successful")
         }
         // redirect user to maangerMenu
         else if (results[0]["is_manager"] == 1){
             res.redirect("/public/managerMenu.html");
+            console.log("login successful")
         }
         // otherwise, redirect to index.html
         else {
@@ -90,7 +92,7 @@ app.post("/", encoder, function (req, res) {
     });
 });
 
-// // When login successfull NOT LONGER USEFUL
+// // When login successful NOT LONGER USEFUL
 // app.get("/managerMenu", function (req, res) {
 //     res.sendFile(__dirname + "/managerMenu.html")
 // });

@@ -27,22 +27,22 @@
     </div>
         
     <!--Line break-->
-    <hr class="horizontal">
+    <hr class="horizontal" >
 
     <div class = "loginForm">
-      <form id="addCardFormId">
+      <form id="addCardFormId" action="/public/addCard" method="POST">
         <table>
 
           <tr>
             <!-- This will be card title-->
             <td>Title:</td>
-            <td><input type="text" id="titleId" placeholder="Your Suggestion Here" size="50%" maxlength="50"
+            <td><input type="text" id="titleId" name="title" placeholder="Your Suggestion Here" size="50%" maxlength="50"
             required></td>
           </tr>
           <tr> 
             <!-- This will be detail info -->
             <td>Description:</td>
-            <td><input type="text" id="descriptionId" placeholder="Why you think this is important?" size="50%" maxlength="150"
+            <td><input type="text" id="descriptionId" name="description" placeholder="Why you think this is important?" size="50%" maxlength="150"
             required></td>
           </tr> 
         </table>
@@ -50,7 +50,7 @@
         <hr class="horizontal" style="width:100%">
 
         <!--Add Button-->
-        <button type="button" class="addBtn" onclick="addCard(this.form)">Add</button>
+        <button type="Submit" class="addBtn" onclick="addCard(this.form)">Add</button>
         
         <!--Clear Button-->
         <button type="button" class="reset" onclick= "clearInputs(this.form)">Clear</button>
