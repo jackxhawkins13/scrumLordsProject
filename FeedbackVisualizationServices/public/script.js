@@ -128,8 +128,8 @@ function rateCards() {
 */
 
 function voteYes() {
-    if (confirm("You are about to vote 'Yes' on this card?")) {
-        if (votedYes == false) {
+    if (votedYes == false) {
+        if (confirm("You are about to vote 'Yes' on this card?")) {
             cardYesVotes += 1;
             cardTotalVotes += 1;
             document.getElementById("upVote").style.visibility = "hidden";
@@ -137,10 +137,9 @@ function voteYes() {
             cardRating = (cardYesVotes / cardTotalVotes) * 100;
             console.log(cardYesVotes, cardNoVotes, cardTotalVotes, cardRating)
             votedYes = true;
-        } else {
-            alert("You have already voted Yes on this card! You can change your vote to No, but not repeatedly vote Yes.")
         }
-
+    } else {
+        alert("You have already voted Yes on this card! You can change your vote to No, but not repeatedly vote Yes.")
     }
 
     //Add DOM statement here that will change the Ratings column in the table.
@@ -149,8 +148,8 @@ function voteYes() {
 }
 
 function voteNo() {
-    if (confirm("You are about to vote 'No' on this card?")) {
-        if (votedNo == false) {
+    if (votedNo == false) {
+        if (confirm("You are about to vote 'No' on this card?")) {
             cardNoVotes += 1;
             cardTotalVotes += 1;
             document.getElementById("downVote").style.visibility = "hidden";
@@ -158,13 +157,13 @@ function voteNo() {
             cardRating = (cardYesVotes / cardTotalVotes) * 100;
             console.log(cardYesVotes, cardNoVotes, cardTotalVotes, cardRating)
             votedNo = true
-        } else{
-            alert("You have already voted No on this card! You can change your vote to Yes, but not repeatedly vote No.")
         }
+    } else {
+        alert("You have already voted No on this card! You can change your vote to Yes, but not repeatedly vote No.")
+    }
 
 
         //Add DOM statement here that will change the Ratings column in the table.
         //This statement is just an example, but we will need a universal one to work on ALL cards that are added.
         document.getElementById("microwave").innerHTML = cardRating.toFixed(0) + "%";
-    }
 }
