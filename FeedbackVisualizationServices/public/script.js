@@ -93,8 +93,8 @@ function backToMenu() {
 //VOTING FUNCTIONS AND BUTTONS CREATED BELOW
 
 /* Rate Cards Function: User selects a card to rate, then clicks "Rate Cards" button.
-    * When button is clicked, UI shows "upvote" and "downvote" buttons for the user.
-    * Voting functions described below 
+    * When button is clicked, UI shows "Yes" and "No" buttons for the user, based on their preference.
+    * Voting functions described below.
 */
 
 function rateCards() {
@@ -118,8 +118,9 @@ function rateCards() {
 /* Voting Functions: User clicks on either "Yes" or "No" to vote if they approve of the card or not.
     * The buttons are invisible until the user chooses to vote. Once they have clicked "Rate Cards" the buttons will appear.
     * User will be allowed to vote once and then the buttons go away.
-    * Buttons will keep track of whether the vote was for "yes" or "no" as well as a total amount of votes cast.
-    * The approval rating is based on the number of "yes" votes divided by the total number of votes. 
+    * Buttons will keep track of whether the vote was for "Yes" or "No" as well as a total amount of votes cast.
+    * The approval rating is based on the number of "Yes" votes divided by the total number of votes.
+    * Once a user has voted, they will not be able to vote the same way again. A user may change their votes, but may not repeat the same vote. 
 */
 
 /* TODO (Essential): 
@@ -136,7 +137,8 @@ function voteYes() {
             document.getElementById("downVote").style.visibility = "hidden";
             cardRating = (cardYesVotes / cardTotalVotes) * 100;
             console.log(cardYesVotes, cardNoVotes, cardTotalVotes, cardRating)
-            votedYes = true;
+            votedYes = true
+            votedNo = false
         }
     } else {
         alert("You have already voted Yes on this card! You can change your vote to No, but not repeatedly vote Yes.")
@@ -145,6 +147,7 @@ function voteYes() {
     //Add DOM statement here that will change the Ratings column in the table.
     //This statement is just an example, but we will need a universal one to work on ALL cards that are added.
     document.getElementById("microwave").innerHTML = cardRating.toFixed(0) + "%";
+    Card.rating = cardRating.toFixed(0) 
 }
 
 function voteNo() {
@@ -157,6 +160,7 @@ function voteNo() {
             cardRating = (cardYesVotes / cardTotalVotes) * 100;
             console.log(cardYesVotes, cardNoVotes, cardTotalVotes, cardRating)
             votedNo = true
+            votedYes = false
         }
     } else {
         alert("You have already voted No on this card! You can change your vote to Yes, but not repeatedly vote No.")
@@ -167,3 +171,4 @@ function voteNo() {
         //This statement is just an example, but we will need a universal one to work on ALL cards that are added.
         document.getElementById("microwave").innerHTML = cardRating.toFixed(0) + "%";
 }
+
