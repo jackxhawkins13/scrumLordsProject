@@ -157,7 +157,10 @@ function voteYes() {
     }
     //Add DOM statement here that will change the Ratings column in the table.
     //This statement is just an example, but we will need a universal one to work on ALL cards that are added.
-    document.getElementById("microwave").innerHTML = cardRating.toFixed(0) + "%";
+    
+    getValue("titleId").rating.innerHTML = cardRating.toFixed(0) + "%";
+
+    // document.getElementById("microwave").innerHTML = cardRating.toFixed(0) + "%";
     Card.rating = cardRating.toFixed(0) 
 }
 
@@ -178,7 +181,10 @@ function voteNo() {
     }
     //Add DOM statement here that will change the Ratings column in the table.
     //This statement is just an example, but we will need a universal one to work on ALL cards that are added.
-    document.getElementById("microwave").innerHTML = cardRating.toFixed(0) + "%";
+    
+    getValue("titleId").rating.innerHTML = cardRating.toFixed(0) + "%";
+    
+    // document.getElementById("microwave").innerHTML = cardRating.toFixed(0) + "%";
     Card.rating = cardRating.toFixed(0) 
 }
 
