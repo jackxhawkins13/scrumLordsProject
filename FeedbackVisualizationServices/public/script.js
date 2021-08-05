@@ -143,7 +143,6 @@ function voteYes() {
     } else {
         alert("You have already voted Yes on this card! You can change your vote to No, but not repeatedly vote Yes.")
     }
-
     //Add DOM statement here that will change the Ratings column in the table.
     //This statement is just an example, but we will need a universal one to work on ALL cards that are added.
     document.getElementById("microwave").innerHTML = cardRating.toFixed(0) + "%";
@@ -165,10 +164,9 @@ function voteNo() {
     } else {
         alert("You have already voted No on this card! You can change your vote to Yes, but not repeatedly vote No.")
     }
-
-
-        //Add DOM statement here that will change the Ratings column in the table.
-        //This statement is just an example, but we will need a universal one to work on ALL cards that are added.
-        document.getElementById("microwave").innerHTML = cardRating.toFixed(0) + "%";
+    //Add DOM statement here that will change the Ratings column in the table.
+    //This statement is just an example, but we will need a universal one to work on ALL cards that are added.
+    document.getElementById("microwave").innerHTML = cardRating.toFixed(0) + "%";
+    Card.rating = cardRating.toFixed(0) 
 }
 
