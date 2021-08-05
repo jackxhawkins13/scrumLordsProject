@@ -66,7 +66,7 @@ function forwardToViewCards(){
 }
 
 function forwardToLogin(){
-    location.href = "../index.html"
+    location.href = "http://localhost:4000/"
 }
 
 // get value by id
