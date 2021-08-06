@@ -3,7 +3,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { query } = require("express");
 const encoder = bodyParser.urlencoded();
-var path = require("path")
+var path = require("path");
+var fs = require("fs");
+var entries;
+
 
 const app = express();
 app.use("/public", express.static("public"));
@@ -63,6 +66,19 @@ app.get("/public/employeeMenu", function(req,res){
     res.sendFile(__dirname + "/public/employeeMenu.html")
 });
 
+connection.query("SELECT card_title, card_description FROM Cards WHERE card_id IS NOT NULL", function(errors, results, fields){
+    if (results.length > 0){
+        console.log("Results are good");
+        const entries = Object.entries(results);
+        // console.log(entries);
+        fs.writeFile("cards.json", JSON.stringify(entries), function(err){
+            console.log("complete");
+        })
+
+    } else{
+        console.log("BAD")
+    }
+})
 
 // set app port
 app.listen(4000);
