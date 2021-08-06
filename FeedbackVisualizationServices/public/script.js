@@ -53,6 +53,8 @@ function login() {
     if (err) throw err;
 }
 
+}
+
 function forwardToAddCards() {
     location.href = "addCard.html";
 }
@@ -68,6 +70,7 @@ function forwardToViewCards(){
 
 function forwardToLogin(){
     location.href = "http://localhost:4000/"
+    console.log('logout.');
 }
 
 // get value by id

@@ -76,18 +76,22 @@
         <br>
         <br>
         <tr>
-          <th>ID</th>
-          <th>title</th>
-          <th>description</th>
+          <th></th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Rating</th>
+
         </tr>
 
 
         <!-- use the output variable from the backend.js and put it into table -->
         <% for (var i = 0; i < output.length;  i++) { %>
           <tr>
-            <td><%= output[i].card_id %></td>
             <td><%= output[i].card_title %></td>
             <td><%= output[i].card_description %></td>
+            <td><%= output[i].card_status %></td>
+            <td><%= output[i].card_rating %></td>
           </tr> 
           <%} %>
 

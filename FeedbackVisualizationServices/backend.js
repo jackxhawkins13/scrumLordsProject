@@ -31,6 +31,11 @@ class Card {
 const app = express();
 app.use("/public", express.static("public"));
 
+//set view
+app.set('views', './views')
+app.set('view engine', 'ejs')
+
+
 
 //data base  info.
 let db_config = {
@@ -139,9 +144,6 @@ app.post("/public/addCard", encoder, function (req, res) {
 
 });
 
-//set view
-app.set('views', './views')
-app.set('view engine', 'ejs')
 
 
 app.get("/view", function (req, res) {
@@ -164,17 +166,16 @@ app.get("/view", function (req, res) {
 
     //let car = { jj: "sadasd" };
 
-    function runthis() {
-        console.log('running runthis')
+    function sendBackquery() {
+        console.log('running sendBackquery')
         let outcome = viewCardJSON;
         res.render('viewCards_Employees.ejs', {output: viewCardJSON})
         res.end();
     }
 
-    //res.render('viewCards_Employees.ejs', car)
 
-    //res.send(viewCardJSON);
-    setTimeout(runthis, 2000)
+    //to handle 
+    setTimeout(sendBackquery, 2000)
 
 
 }
