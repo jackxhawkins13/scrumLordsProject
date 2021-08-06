@@ -63,6 +63,7 @@ function forwardToEmployeeMenu(){
 
 function forwardToViewCards(){
     location.href = "viewCards_Employees.html"
+    
 }
 
 function forwardToLogin(){

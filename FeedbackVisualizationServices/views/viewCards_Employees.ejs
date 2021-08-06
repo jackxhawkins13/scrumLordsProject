@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>View Cards</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="public/style.css" rel="stylesheet" type="text/css" />
 
   <!-- I comment out these related files to test temporary_test.js
       Once we done the change, we should modify them for better performance
@@ -16,15 +17,16 @@
 
   <!-- This script should give us acces to the sql -->
   <!--<script src="http://mysqljs.com/mysql.js"></script>-->
-  <script src="viewCards_employees.js"></script>
-  <script src="script.js"></script>
+  <!-- <script src="public/viewCards_employees.js"></script> -->
+  <script src="public/script.js"></script>
 
 </head>
-<body id = "datas" onload=init();>
+
+<body id="datas" onload=init();>
 
   <!--I also comment out this part for testing
       We should do some change about these scripts-->
-      
+
   <!--
   <script>
     mysql.Execute(
@@ -46,35 +48,53 @@
     </script>
     -->
 
-    <!-- Page Header-->
-    <h2 class="center">HAF - Feedback Visualization Services</h2>
+  <!-- Page Header-->
+  <h2 class="center">HAF - Feedback Visualization Services</h2>
 
-    <!--Line break-->
-    <hr class="horizontal">
+  <!--Line break-->
+  <hr class="horizontal">
 
-    <!--menu Button-->
-    <button type="button" class="menuBtn"
-    style="width:12%" onclick="forwardToEmployeeMenu()">Menu</button>
-    
-    <!--Logout Button-->
-    <button type="button" class="logOutBtn" onclick="forwardToLogin()">Logout</button>
-    <div class="blueBtn"><button id="rateCards" onclick="rateCards()">Rate Cards</button></div>
+  <!--menu Button-->
+  <button type="button" class="menuBtn" style="width:12%" onclick="forwardToEmployeeMenu()">Menu</button>
 
-    <div>
-        <h3 class="menuHeader">View Cards</h3>
-    </div>
-        
-    <!--Line break-->
-    <hr class="horizontal">
+  <!--Logout Button-->
+  <button type="button" class="logOutBtn" onclick="forwardToLogin()">Logout</button>
+  <div class="blueBtn"><button id="rateCards" onclick="rateCards()">Rate Cards</button></div>
 
-    <div class = "container">
+  <div>
+    <h3 class="menuHeader">View Cards</h3>
+  </div>
+
+  <!--Line break-->
+  <hr class="horizontal">
+
+  <div class="container">
 
     <div id="result">
       <table id="cardTable">
-        <tr><th>Cards will display here!</th></tr>
+        <br>
+        <br>
+        <br>
+        <tr>
+          <th>ID</th>
+          <th>title</th>
+          <th>description</th>
+        </tr>
+
+
+
+        <% for (var i = 0; i < output.length;  i++) { %>
+          <tr>
+            <td><%= output[i].card_id %></td>
+            <td><%= output[i].card_title %></td>
+            <td><%= output[i].card_description %></td>
+          </tr> 
+          <%} %>
+
 
       </table>
     </div>
 
-  </body>
+</body>
+
 </html>

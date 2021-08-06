@@ -4,14 +4,33 @@ const bodyParser = require("body-parser");
 const { query } = require("express");
 const encoder = bodyParser.urlencoded();
 var path = require("path")
+var fs = require('fs');
+
+
+
+class Card {
+    static sum = 0;
+    constructor(cardId, title, description, status, rating, author) {
+        this.cardId = cardId;
+        this.title = title;
+        this.description = description;
+        this.status = status;
+        this.rating = rating;
+        this.author = author;
+    }
+    add() {
+        Card.sum++;
+    }
+}
 
 
 
 
 
-
+//static files
 const app = express();
 app.use("/public", express.static("public"));
+
 
 //data base  info.
 let db_config = {
@@ -58,7 +77,6 @@ handleDisconnect();
 
 
 
-
 app.get("/", function (req, res) {
     res.sendFile(__dirname + "/index.html");
 });
@@ -68,26 +86,27 @@ app.post("/", encoder, function (req, res) {
     var username = req.body.username;
     var password = req.body.password;
     connection.query("SELECT * FROM Employees WHERE emp_username = ? AND emp_password = ?", [username, password], function (errors, results, fields) {
-      // Check if results > 0
-    if (results.length > 0){        
-        if (results[0]["is_manager"] == 0){
-            res.redirect("/public/employeeMenu.html");
-            console.log("login successful")
-        }
-        // redirect user to maangerMenu
-        else if (results[0]["is_manager"] == 1){
-            res.redirect("/public/managerMenu.html");
-            console.log("login successful")
-        }
-        // otherwise, redirect to index.html
+        // Check if results > 0
+        if (results.length > 0) {
+            if (results[0]["is_manager"] == 0) {
+                res.redirect("/public/employeeMenu.html");
+                console.log("login successful")
+            }
+            // redirect user to maangerMenu
+            else if (results[0]["is_manager"] == 1) {
+                res.redirect("/public/managerMenu.html");
+                console.log("login successful")
+
+            }
+            // otherwise, redirect to index.html
+            else {
+                res.redirect("/");
+            }
+            res.end;
+        } //If not > 0, refresh page
         else {
             res.redirect("/");
         }
-        res.end;
-    } //If not > 0, refresh page
-    else{
-        res.redirect("/");
-    }
         res.end();
     });
 });
@@ -101,7 +120,7 @@ app.post("/", encoder, function (req, res) {
 //     res.sendFile(__dirname + "/employeeMenu.html")
 // });
 //added card
-app.post("/public/addCard",encoder, function (req, res) {
+app.post("/public/addCard", encoder, function (req, res) {
     console.log(req.body);
     let title = req.body.title;
     let description = req.body.description;
@@ -117,8 +136,57 @@ app.post("/public/addCard",encoder, function (req, res) {
     console.log("added new cards");
     res.redirect("/public/addCard.html")
     res.end();
-    
+
 });
+
+//set view
+app.set('views', './views')
+app.set('view engine', 'ejs')
+
+
+app.get("/view", function (req, res) {
+    let viewCardJSON;
+    console.log("viewing card");
+    connection.query("SELECT * FROM Cards WHERE card_id IS NOT NULL", function (errors, results, fields) {
+
+
+        if (results.length > 0) {
+            console.log("results are good")
+            viewCardJSON = results;
+            console.log(viewCardJSON);
+
+
+        } else {
+            console.log("BAD")
+        }//end if else
+    })//end query
+
+
+    //let car = { jj: "sadasd" };
+
+    function runthis() {
+        console.log('running runthis')
+        let outcome = viewCardJSON;
+        res.render('viewCards_Employees.ejs', {output: viewCardJSON})
+        res.end();
+    }
+
+    //res.render('viewCards_Employees.ejs', car)
+
+    //res.send(viewCardJSON);
+    setTimeout(runthis, 2000)
+
+
+}
+
+)
+
+
+
+
+
+
+
 
 
 // set app port
