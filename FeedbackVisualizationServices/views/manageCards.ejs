@@ -55,11 +55,12 @@
   <hr class="horizontal">
 
   <!--menu Button-->
-  <button type="button" class="menuBtn" style="width:12%" onclick="forwardToManagerMenu()">Menu</button>
+  <button type="button" class="menuBtn" style="width:12%" onclick="forwardToEmployeeMenuFromejs()">Menu</button>
 
   <!--Logout Button-->
   <button type="button" class="logOutBtn" onclick="forwardToLogin()">Logout</button>
-  <div class="blueBtn"><button id="manageCards" onclick="approveCards()">Approve Card</button></div>
+  <form id="manageForm" action="/subManageForm" method="POST">
+  <div class="blueBtn"><button type="submit" id="manageCards" onclick="managesCards()">Approve Card</button></div>
 
   <div>
     <h3 class="menuHeader">Manage Cards</h3>
@@ -71,32 +72,43 @@
   <div class="container">
 
     <div id="result">
-      <table id="cardTable">
-        <br>
-        <br>
-        <br>
-        <tr>
-
-          <th>Title</th>
-          <th>Description</th>
-          <th>Status</th>
-          <th>Rating</th>
-
-        </tr>
-
-
-        <!-- use the output variable from the backend.js and put it into table -->
-        <% for (var i = 0; i < output.length;  i++) { %>
+      
+        <table id="cardTable">
+          <br>
+          <br>
+          <br>
           <tr>
-            <td><%= output[i].card_title %></td>
-            <td><%= output[i].card_description %></td>
-            <td><%= output[i].card_status %></td>
-            <td><%= output[i].card_rating %></td>
-          </tr> 
-          <%} %>
+            <th></th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Rating</th>
+
+          </tr>
 
 
-      </table>
+          <!-- use the output variable from the backend.js and put it into table -->
+          <% for (var i=0; i < output.length; i++) { %>
+            <tr> 
+              <td><input type="radio" value=<%= output[i].card_id %> name="rating" id="rating"></td>
+              <td>
+                <%= output[i].card_title %>
+              </td>
+              <td>
+                <%= output[i].card_description %>
+              </td>
+              <td>
+                <%= output[i].card_status %>
+              </td>
+              <td>
+                <%= output[i].card_rating + '%' %>
+              </td>
+            </tr>
+            <%} %>
+
+
+        </table>
+      </form>
     </div>
 
 </body>

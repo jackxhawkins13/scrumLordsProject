@@ -187,7 +187,7 @@ function randomIntFromInterval(min, max) { // min and max included
 }
 let rndInt;
 
-
+///////rate cards up
 app.post('/submitRatingForm', encoder, function (req, res) {
     console.log(req.body);
     rndInt = randomIntFromInterval(1, 6);
@@ -246,7 +246,31 @@ app.get("/manage", function (req, res) {
 
 })
 
+// //////Approve Cards
+app.post('/subManageForm', encoder, function (req, res) {
+    console.log(req.body);
+    // rndInt = randomIntFromInterval(1, 6);
+    // console.log(rndInt);
+    // rndInt = rndInt * 0.01 + 1;
+    var appr = "Accepted"
+    let queryID = parseInt(req.body.rating);
+    if (queryID > 0) {
+        connection.query(`UPDATE Cards SET card_status = ? where card_id = ?`, [appr, queryID], function (errors, results, fields) {
+            if (errors) {
+                console.log(errors);
+            } else {
+                console.log(`UPDATED to the database.`);
+                res.redirect("/manage");
+            }
+    
+    
+    
+            res.end();
+        })
+    }//end if
 
+
+})
 
 
 
