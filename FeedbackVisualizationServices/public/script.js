@@ -81,6 +81,14 @@ function forwardToView(){
     location.href = "http://localhost:4000/view"
 }
 
+function forwardToManage(){
+    location.href = "http://localhost:4000/manage"
+}
+
+function forwardToManagerMenu(){
+    location.href = "public/managerMenu.html"
+}
+
 // get value by id
 function getValue(id) {
     return String(document.getElementById(id).value);

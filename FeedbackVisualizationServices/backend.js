@@ -35,6 +35,8 @@ app.use("/public", express.static("public"));
 app.set('views', './views')
 app.set('view engine', 'ejs')
 
+// app.set("manage")
+
 
 
 //data base  info.
@@ -145,7 +147,7 @@ app.post("/public/addCard", encoder, function (req, res) {
 });
 
 
-
+/////////////////////////////////////////////view and rate cards EMPLOYEES//////////////////////////////////
 app.get("/view", function (req, res) {
     let viewCardJSON;
     console.log("viewing card");
@@ -209,7 +211,40 @@ app.post('/submitRatingForm', encoder, function (req, res) {
 
 
 })
+/////////////////////////Approve/Deny cards MANAGERS ////////////////////////////////////////////////////////////////////
 
+app.get("/manage", function (req, res) {
+    let viewCardJSON;
+    console.log("Managing Cards");
+    connection.query("SELECT * FROM Cards", function (errors, results, fields) {
+
+
+        if (results.length > 0) {
+            console.log("results are good")
+            viewCardJSON = results;
+            console.log(viewCardJSON);
+
+
+        } else {
+            console.log("BAD")
+        }//end if else
+    })//end query
+
+
+    //let car = { jj: "sadasd" };
+
+    function sendBackquery() {
+        console.log('running sendBackquery')
+        let outcome = viewCardJSON;
+        res.render('manageCards.ejs', { output: viewCardJSON })
+        res.end();
+    }
+
+
+    //to handle 
+    setTimeout(sendBackquery, 500)
+
+})
 
 
 
