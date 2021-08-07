@@ -73,6 +73,10 @@ function forwardToLogin(){
     console.log('logout.');
 }
 
+function forwardToView(){
+    location.href = "http://localhost:4000/view"
+}
+
 // get value by id
 function getValue(id) {
     return String(document.getElementById(id).value);
