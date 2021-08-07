@@ -63,8 +63,8 @@ function forwardToEmployeeMenu(){
     location.href = "employeeMenu.html"
 }
 
-forwardToEmployeeMenuFromejs() {
-    location.href = "public/employeeMenu.html"
+function forwardToEmployeeMenuFromejs() {
+    location.href = "public/employeeMenu.html";
 }
 
 function forwardToViewCards(){
