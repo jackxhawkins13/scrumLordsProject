@@ -63,6 +63,10 @@ function forwardToEmployeeMenu(){
     location.href = "employeeMenu.html"
 }
 
+forwardToEmployeeMenuFromejs() {
+    location.href = "public/employeeMenu.html"
+}
+
 function forwardToViewCards(){
     location.href = "viewCards_Employees.html"
     
@@ -118,20 +122,8 @@ function backToMenu() {
 */
 
 function rateCards() {
-    btns = document.querySelectorAll('input[name="radio"]');
-    let selection;
-    for (const btn of btns) {
-        if (btn.checked) {
-            selection = btn.value;
-            break;
-        }
-    }
     if (selection == null) {
         alert("You haven't select a card to rate! Please try again!")
-    }
-    else {
-        document.getElementById("upVote").style.visibility = "visible";
-        document.getElementById("downVote").style.visibility = "visible";
     }
 }
 

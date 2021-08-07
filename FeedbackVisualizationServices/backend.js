@@ -169,19 +169,46 @@ app.get("/view", function (req, res) {
     function sendBackquery() {
         console.log('running sendBackquery')
         let outcome = viewCardJSON;
-        res.render('viewCards_Employees.ejs', {output: viewCardJSON})
+        res.render('viewCards_Employees.ejs', { output: viewCardJSON })
         res.end();
     }
 
 
     //to handle 
-    setTimeout(sendBackquery, 2000)
+    setTimeout(sendBackquery, 500)
 
+})
 
+//random number function
+function randomIntFromInterval(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min)
 }
+let rndInt;
 
-)
 
+app.post('/submitRatingForm', encoder, function (req, res) {
+    console.log(req.body);
+    rndInt = randomIntFromInterval(1, 6);
+    console.log(rndInt);
+    rndInt = rndInt * 0.01 + 1;
+    let queryID = parseInt(req.body.rating);
+    if (queryID > 0) {
+        connection.query(`UPDATE Cards SET card_rating = card_rating * ? where card_id = ?`, [rndInt, queryID], function (errors, results, fields) {
+            if (errors) {
+                console.log(errors);
+            } else {
+                console.log(`UPDATED to the database.`);
+                res.redirect("/view");
+            }
+    
+    
+    
+            res.end();
+        })
+    }//end if
+
+
+})
 
 
 
