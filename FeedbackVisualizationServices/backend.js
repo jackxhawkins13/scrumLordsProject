@@ -149,7 +149,7 @@ app.post("/public/addCard", encoder, function (req, res) {
 app.get("/view", function (req, res) {
     let viewCardJSON;
     console.log("viewing card");
-    connection.query("SELECT * FROM Cards WHERE card_id IS NOT NULL", function (errors, results, fields) {
+    connection.query("SELECT * FROM Cards", function (errors, results, fields) {
 
 
         if (results.length > 0) {
