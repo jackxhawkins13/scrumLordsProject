@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Cards</title>
+  <link href="public/style.css" rel="stylesheet" type="text/css" />
+
+  <!-- I comment out these related files to test temporary_test.js
+      Once we done the change, we should modify them for better performance
+      This is an important part-->
+
+
+  <!--<script src="public/script.js"></script>-->
+
+  <!-- This script should give us acces to the sql -->
+  <!--<script src="http://mysqljs.com/mysql.js"></script>-->
+  <!-- <script src="public/viewCards_employees.js"></script> -->
+  <script src="public/script.js"></script>
+
+</head>
+
+<body id="datas" onload=init();>
+
+  <!--I also comment out this part for testing
+      We should do some change about these scripts-->
+
+  <!--
+  <script>
+    mysql.Execute(
+      "sql.wpc-is.online",   // our server
+      "summer2021group2",   //login name 
+      "group2summer2021",   //login password
+      "DatabaseName",       //Name of DatabaseName
+                            // Querry for SQL string 
+      // This will be our querry to access info 
+      //"SELECT"                                
+         // "card_title, card_description"       
+      //"FROM cards", 
+      // The purpose of this function is to convert data into a string in JSON for the data we just querryied
+      function (data){
+        document.getElementById("output").innerHTML=
+        json.stringify(data, null, 2);
+      }
+    )
+    </script>
+    -->
+
+  <!-- Page Header-->
+  <h2 class="center">HAF - Feedback Visualization Services</h2>
+
+  <!--Line break-->
+  <hr class="horizontal">
+
+  <!--menu Button-->
+  <button type="button" class="menuBtn" style="width:12%" onclick="forwardToLogin()">Menu</button>
+
+  <!--Logout Button-->
+  <button type="button" class="logOutBtn" onclick="forwardToLogin()">Logout</button>
+  <div class="blueBtn"><button id="rateCards" onclick="approveCards()">Approve Card</button></div>
+
+  <div>
+    <h3 class="menuHeader">Manage Cards</h3>
+  </div>
+
+  <!--Line break-->
+  <hr class="horizontal">
+
+  <div class="container">
+
+    <div id="result">
+      <table id="cardTable">
+        <br>
+        <br>
+        <br>
+        <tr>
+
+          <th>Title</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Rating</th>
+
+        </tr>
+
+
+        <!-- use the output variable from the backend.js and put it into table -->
+        <% for (var i = 0; i < output.length;  i++) { %>
+          <tr>
+            <td><%= output[i].card_title %></td>
+            <td><%= output[i].card_description %></td>
+            <td><%= output[i].card_status %></td>
+            <td><%= output[i].card_rating %></td>
+          </tr> 
+          <%} %>
+
+
+      </table>
+    </div>
+
+</body>
+
+</html>
