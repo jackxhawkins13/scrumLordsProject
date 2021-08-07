@@ -53,7 +53,7 @@ function login() {
     if (err) throw err;
 }
 
-}
+
 
 function forwardToAddCards() {
     location.href = "addCard.html";
