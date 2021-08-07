@@ -10,6 +10,7 @@
     npm install mysql
     npm install express
     npm install body-parser
+    npm install ejs
 8. When all modules have been installed, type in "node backend.js"
 
 The webpage can now be ran locally on your browser, simply go to your choice of browser and 
